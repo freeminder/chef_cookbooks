@@ -1,0 +1,77 @@
+global
+  log 127.0.0.1   local0
+  log 127.0.0.1   local1 notice
+  #log loghost    local0 info
+  maxconn 80000
+  #debug
+  #quiet
+  user haproxy
+  group haproxy
+  stats socket /tmp/haproxy.sock
+
+defaults
+  log             global
+  mode            http
+  option          httplog
+  option          dontlognull
+  retries         3
+  option          redispatch
+  maxconn        80000
+  timeout client 60s             # Client and server timeout must match the longest
+  timeout server 60s             # time we may wait for a response from the server.
+  timeout queue  120s              # Don't queue requests too long if saturated.
+  timeout connect 10s           # There's no reason to change this one.
+  timeout http-request 30s	# A complete request may never take that long.
+  option          httpclose                                         # disable keepalive (HAProxy does not yet support the HTTP keep-alive mode)
+  option          abortonclose                                      # enable early dropping of aborted requests from pending queue
+  option          httpchk                                           # enable HTTP protocol to check on servers health
+  stats auth <%= node['pvlb']['statsusr'] %>:<%= node['pvlb']['statspwd'] %>
+  stats uri /haproxy?stats
+
+
+# Set up application listeners here.
+
+<% node['pvlb']['lb_groups'].each do |lb_group_name, lbservers| %>
+backend rails_app_servers
+  balance roundrobin
+  option redispatch
+  option forwardfor
+  option httpchk GET /health
+  <% lbservers.each do |servername|
+		srvdata = node['pvlb']['lb_servers'][servername]
+	%>
+  server <%= servername %> <%= srvdata['ipaddr'] %>:80 weight <%= srvdata['weight'] %> maxconn 84 check inter 10s
+	<%   end %>
+<% end %>
+
+<% node['pvlb']['lb_groups'].each do |lb_group_name, lbservers| %>
+backend rails_app_servers_ssl
+  mode tcp
+  balance roundrobin
+  option redispatch
+  option ssl-hello-chk
+	<% lbservers.each do |servername|
+		srvdata = node['pvlb']['lb_servers'][servername]
+	%>
+  server <%= servername %> <%= srvdata['ipaddr'] %>:443 weight <%= srvdata['weight'] %> maxconn 84 check inter 10s
+	<%   end %>
+<% end %>
+
+
+frontend http-in
+  bind :80
+  # all domains of Rails applications
+  acl rails_application_sliderapp_domain_sliderapp hdr_end(host) -i sliderapp
+  use_backend rails_app_servers if rails_application_sliderapp_domain_sliderapp
+  default_backend rails_app_servers
+  
+frontend https-in
+  mode tcp
+  bind :443
+  # all domains of Rails applications
+  acl rails_applications_ssl hdr_end(host) -i sliderapp
+  use_backend rails_app_servers_ssl if rails_applications_ssl
+  default_backend rails_app_servers_ssl
+
+
+<%= node['pvlb']['haproxy_extra_raw_config'] %>
