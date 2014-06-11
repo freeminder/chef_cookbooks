@@ -4,25 +4,10 @@
 
 # INSTALL AND DEFINE SERVICES
 #package 'nginx'
-package 'imagemagick'
-package 'redis-server'
-package 'git'
-package 'monit'
-
-
-# PATCH /etc/inputrc
-template "/tmp/inputrc_append.conf" do
-	source "inputrc_append.erb"
-end
-
-execute "Append inputrc search with arrow keys" do
-	user "root"
-	command "cat /tmp/inputrc_append.conf >> /etc/inputrc"
-end
-
-execute "Remove inputrc_append" do
-	command "rm /tmp/inputrc_append.conf"
-end
+apt_package 'imagemagick'
+apt_package 'redis-server'
+apt_package 'git'
+apt_package 'monit'
 
 
 # Some default files/directories
@@ -33,11 +18,22 @@ end
 # 	recursive true
 # end
 
-# cookbook_file '/var/pvlb/html/index.html' do
-#	 mode '0644'
-#	 owner 'root'
-#	 group 'root'
-# end
+%w{ config log tmp }.each do |dir|
+	directory "/srv/www/sliderapp/shared/#{dir}" do
+		mode '0755'
+		owner 'deploy'
+		group 'www-data'
+		action :create
+		recursive true
+	end
+end
+
+
+cookbook_file '/srv/www/sliderapp/shared/config/database.yml' do
+	mode '0644'
+	owner 'deploy'
+	group 'www-data'
+end
 
 # file '/var/pvlb/html/health.txt' do
 #	 mode '0644'
