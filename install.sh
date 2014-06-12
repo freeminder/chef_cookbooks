@@ -33,7 +33,7 @@ hostname -F /etc/hostname
 if [ ! -x /usr/bin/chef-solo ] && [ ! -x /opt/chef/embedded/bin/chef-solo ] && [ $1 == client ]
 then
 	curl -L https://www.opscode.com/chef/install.sh | bash
-	#!!#dpkg -i /root/chef_11*.deb && rm -f /root/chef_11*.deb
+
 	curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
 	source /usr/local/rvm/scripts/rvm
 	echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
@@ -49,6 +49,8 @@ then
 		&& rm -f chef-server_11.1.1-1_amd64.deb
 		chef-server-ctl reconfigure
 
+		#!!#curl -L https://www.opscode.com/chef/install.sh | bash
+
 		curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
 		source /usr/local/rvm/scripts/rvm
 		echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
@@ -60,6 +62,9 @@ then
 		rpm -i /root/chef-server-11*.rpm \
 		&& rm -f /root/chef-server-11*.rpm
 		chef-server-ctl reconfigure
+		iptables -I INPUT -p tcp --dport 443 -d `ip ad sh|grep -a0 "eth"|grep "inet "|awk '{ print $2 }'|cut -d / -f 1` -j ACCEPT
+
+		#!!#curl -L https://www.opscode.com/chef/install.sh | bash
 
 		curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
 		source /usr/local/rvm/scripts/rvm
