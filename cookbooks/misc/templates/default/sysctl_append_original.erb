@@ -1,0 +1,31 @@
+
+
+
+
+
+# Security and performance tuning
+
+#Redirects
+# Disables IP source routing
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.lo.accept_source_route = 0
+net.ipv4.conf.eth0.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+# Enable IP spoofing protection, turn on source route verification
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.lo.rp_filter = 1
+net.ipv4.conf.eth0.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+
+#ICMP
+# Disable ICMP Redirect Acceptance
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.lo.accept_redirects = 0
+net.ipv4.conf.eth0.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+
+#Memory
+# kernel.shmmax = 1073741824
+# vm.drop_caches = 3
+# vm.swappiness = 0
+

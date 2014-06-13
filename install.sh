@@ -51,10 +51,10 @@ then
 
 		#!!#curl -L https://www.opscode.com/chef/install.sh | bash
 
-		curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
-		source /usr/local/rvm/scripts/rvm
-		echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
-		gem install chef
+		#curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
+		#source /usr/local/rvm/scripts/rvm
+		#echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
+		#gem install chef
 	fi
 
 	if [ -x /usr/bin/yum ]; then
@@ -66,10 +66,10 @@ then
 
 		#!!#curl -L https://www.opscode.com/chef/install.sh | bash
 
-		curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
-		source /usr/local/rvm/scripts/rvm
-		echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
-		gem install chef
+		#curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles
+		#source /usr/local/rvm/scripts/rvm
+		#echo "source /usr/local/rvm/scripts/rvm" >> .bashrc
+		#gem install chef
 	fi
 fi
 

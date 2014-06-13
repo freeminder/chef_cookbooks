@@ -1,5 +1,6 @@
 # INSTALL PACKAGES
 package 'mc'
+package 'wget'
 package 'curl'
 package 'git'
 
@@ -20,42 +21,63 @@ directory '/root/.ssh' do
 end
 
 cookbook_file '/root/.ssh/id_rsa' do
-	 mode '0400'
-	 owner 'root'
-	 group 'root'
-	 source 'slider_rsa'
+	mode '0400'
+	owner 'root'
+	group 'root'
+	source 'slider_rsa'
 end
 
 cookbook_file '/root/.ssh/id_rsa.pub' do
-	 mode '0644'
-	 owner 'root'
-	 group 'root'
-	 source 'slider_rsa.pub'
+	mode '0644'
+	owner 'root'
+	group 'root'
+	source 'slider_rsa.pub'
 end
 
 
-# Create a user
-user "chef" do
-  comment "Chef User"
-  gid "users"
-  home "/home/chef"
-  shell "/bin/bash"
-  password "$1$zXNyUjfV$JU.t4NkqTaZfrMFKuhImU0"
-  supports manage_home: true
+# SYSCTL tuning
+template "/tmp/sysctl_append.conf" do
+	source "sysctl_append.erb"
+end
+
+execute "Tune sysctl.conf" do
+	user "root"
+	command "cat /tmp/sysctl_append.conf >> /etc/sysctl.conf && sysctl -p"
+end
+
+execute "Remove sysctl_append" do
+	command "rm /tmp/sysctl_append.conf"
 end
 
 
+# APPEND /etc/hosts
+template "/tmp/hosts_append.conf" do
+	source "hosts_append.erb"
+end
+
+execute "Append hosts with our servers" do
+	user "root"
+	command "cat /tmp/hosts_append.conf >> /etc/hosts"
+end
+
+execute "Remove hosts_append" do
+	command "rm /tmp/hosts_append.conf"
+end
 
 
-# template "/tmp/inputrc_append.conf" do
-# 	source "inputrc_append.erb"
-# end
+# Remote agent for Sublime Text
+execute "Download and make executable rsub" do
+	user "root"
+	command "wget -O /usr/local/bin/rsub https://raw.github.com/aurora/rmate/master/rmate && chmod +x /usr/local/bin/rsub"
+	not_if { ::File.exist?('/usr/local/bin/rsub') }
+end
 
-# execute "Append inputrc search with arrow keys" do
-# 	user "root"
-# 	command "cat /tmp/inputrc_append.conf >> /etc/inputrc"
-# end
 
-# execute "Remove inputrc_append" do
-# 	command "rm /tmp/inputrc_append.conf"
+# PATCH /etc/hosts
+# ruby_block "insert_line" do
+# 	block do
+# 		file = Chef::Util::FileEdit.new("/etc/hosts")
+# 		file.insert_line_if_no_match("/chef/", "10.42.0.6	chef-server.local	chef-server")
+# 		file.write_file
+# 	end
 # end

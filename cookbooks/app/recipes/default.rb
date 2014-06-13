@@ -3,7 +3,6 @@
 # end
 
 # INSTALL AND DEFINE SERVICES
-package 'nginx'
 package 'imagemagick'
 package 'redis-server'
 package 'monit'
@@ -58,14 +57,6 @@ end
 end
 
 
-
-# file '/var/pvlb/html/health.txt' do
-#	 mode '0644'
-#	 owner 'root'
-#	 group 'root'
-#	 content "OK\n"
-# end
-
 # NGINX CONFIG
 template '/etc/nginx/nginx.conf' do
 	 mode '0644'
@@ -79,3 +70,12 @@ service 'nginx' do
 	 action :start
 end
 
+
+
+
+# file '/var/pvlb/html/health.txt' do
+#	 mode '0644'
+#	 owner 'root'
+#	 group 'root'
+#	 content "OK\n"
+# end
