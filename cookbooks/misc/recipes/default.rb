@@ -13,7 +13,7 @@ cookbook_file '/etc/inputrc' do
 end
 
 
-# SSH keys
+# SSH keys for root (shared access between servers)
 directory '/root/.ssh' do
 	mode '0700'
 	owner 'root'
@@ -24,14 +24,20 @@ cookbook_file '/root/.ssh/id_rsa' do
 	mode '0400'
 	owner 'root'
 	group 'root'
-	source 'slider_rsa'
+	source 'root_rsa'
 end
 
 cookbook_file '/root/.ssh/id_rsa.pub' do
 	mode '0644'
 	owner 'root'
 	group 'root'
-	source 'slider_rsa.pub'
+	source 'root_rsa.pub'
+end
+
+cookbook_file '/root/.ssh/authorized_keys' do
+	mode '0600'
+	owner 'root'
+	group 'root'
 end
 
 

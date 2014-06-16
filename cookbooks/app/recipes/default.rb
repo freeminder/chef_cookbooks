@@ -2,24 +2,60 @@
 #   # do app things
 # end
 
+case node['platform_family']
+when 'debian'
+	apt_package 'libmysqlclient-dev'
+when 'rhel', 'fedora'
+	yum_package 'mysql-devel'
+end
+
+
 # INSTALL AND DEFINE SERVICES
 package 'imagemagick'
 package 'redis-server'
 package 'monit'
+gem_package 'bundler'
 
-# Create a user
+
+# Create a user for deployments
 user "deploy" do
   comment "User for deployment"
-  gid "adm"
+  gid "www-data"
   home "/home/deploy"
   shell "/bin/bash"
   password "$1$zXNyUjfV$JU.t4NkqTaZfrMFKuhImU0"
   supports manage_home: true
 end
 
+# SSH keys for deploy user
+directory '/home/deploy/.ssh' do
+	mode '0700'
+	owner 'deploy'
+	group 'www-data'
+end
+
+cookbook_file '/home/deploy/.ssh/id_rsa' do
+	mode '0400'
+	owner 'deploy'
+	group 'www-data'
+	source 'slider_rsa'
+end
+
+cookbook_file '/home/deploy/.ssh/id_rsa.pub' do
+	mode '0644'
+	owner 'deploy'
+	group 'www-data'
+	source 'slider_rsa.pub'
+end
+
+cookbook_file '/home/deploy/.ssh/authorized_keys' do
+	mode '0600'
+	owner 'deploy'
+	group 'www-data'
+end
+
 
 # Some default files/directories
-
 %w{ config log tmp }.each do |dir|
 	directory "#{node.default['app']['app_path']}/shared/#{dir}" do
 		mode '0755'
@@ -28,6 +64,22 @@ end
 		action :create
 		recursive true
 	end
+end
+
+# directory "/srv/www/sliderapp" do
+#   owner "deploy"
+#   group "www-data"
+#   recursive true
+# end
+Dir[ "/srv/www/**/*" ].each do |path|
+  # file path do
+  #   owner "deploy"
+  #   group "www-data"
+  # end if File.file?(path)
+  directory path do
+    owner "deploy"
+    group "www-data"
+  end if File.directory?(path)
 end
 
 %w{ database.yml local_env.yml secrets.yml }.each do |file|
@@ -39,11 +91,12 @@ end
 end
 
 
+
 # Create a cronjob
 cron "swapbreak" do
   hour "3"
   minute "0"
-  command "cd /srv/www/sliderapp/current && bundle exec rake timeout:swapbreak"
+  command "cd #{node.default['app']['app_path']}/current && bundle exec rake timeout:swapbreak"
 end
 
 
@@ -65,12 +118,22 @@ template '/etc/nginx/nginx.conf' do
 	 notifies :reload, 'service[nginx]'
 end
 
-service 'nginx' do
-	 supports :reload => true
-	 action :start
+# service 'nginx' do
+# 	 supports :reload => true
+# 	 action :start
+# end
+
+
+cookbook_file "#{node.default['app']['app_path']}/shared/bin/resque_service.rb" do
+	mode '0755'
+	owner 'deploy'
+	group 'www-data'
 end
 
-
+# execute "resque service" do
+# 	user "deploy"
+# 	command "ruby #{node.default['app']['app_path']}/current/bin/resque_service.rb"
+# end
 
 
 # file '/var/pvlb/html/health.txt' do
