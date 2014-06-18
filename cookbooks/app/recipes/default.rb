@@ -17,46 +17,9 @@ package 'monit'
 gem_package 'bundler'
 
 
-# Create a user for deployments
-user "deploy" do
-  comment "User for deployment"
-  gid "www-data"
-  home "/home/deploy"
-  shell "/bin/bash"
-  password "$1$zXNyUjfV$JU.t4NkqTaZfrMFKuhImU0"
-  supports manage_home: true
-end
-
-# SSH keys for deploy user
-directory '/home/deploy/.ssh' do
-	mode '0700'
-	owner 'deploy'
-	group 'www-data'
-end
-
-cookbook_file '/home/deploy/.ssh/id_rsa' do
-	mode '0400'
-	owner 'deploy'
-	group 'www-data'
-	source 'slider_rsa'
-end
-
-cookbook_file '/home/deploy/.ssh/id_rsa.pub' do
-	mode '0644'
-	owner 'deploy'
-	group 'www-data'
-	source 'slider_rsa.pub'
-end
-
-cookbook_file '/home/deploy/.ssh/authorized_keys' do
-	mode '0600'
-	owner 'deploy'
-	group 'www-data'
-end
-
 
 # Some default files/directories
-%w{ config log tmp }.each do |dir|
+%w{ bin config log tmp }.each do |dir|
 	directory "#{node.default['app']['app_path']}/shared/#{dir}" do
 		mode '0755'
 		owner 'deploy'
@@ -109,6 +72,10 @@ end
 	end
 end
 
+# execute "Phusion Passenger final install" do
+# 	user "root"
+# 	command "cd /usr/local/rvm/gems/ruby-2.1.2/gems/passenger-4.0.45 && export rvmsudo_secure_path=1 rvmsudo rake nginx"
+# end
 
 # NGINX CONFIG
 template '/etc/nginx/nginx.conf' do
@@ -130,10 +97,12 @@ cookbook_file "#{node.default['app']['app_path']}/shared/bin/resque_service.rb" 
 	group 'www-data'
 end
 
-# execute "resque service" do
-# 	user "deploy"
-# 	command "ruby #{node.default['app']['app_path']}/current/bin/resque_service.rb"
-# end
+execute "resque service" do
+	user "deploy"
+	command "ruby #{node.default['app']['app_path']}/shared/bin/resque_service.rb"
+	returns [0, 2, nil]
+	not_if { ::File.exists?("#{node.default['app']['app_path']}/releases")}
+end
 
 
 # file '/var/pvlb/html/health.txt' do
