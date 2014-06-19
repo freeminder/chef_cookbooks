@@ -29,7 +29,7 @@ default['nginx']['dir']          = '/etc/nginx'
 default['nginx']['script_dir']   = '/usr/sbin'
 default['nginx']['log_dir']      = '/var/log/nginx'
 default['nginx']['binary']       = '/usr/sbin/nginx'
-default['nginx']['default_root'] = '/srv/www/sliderapp'
+default['nginx']['default_root'] = '/srv/www/sliderapp/current/public'
 
 case node['platform_family']
 when 'debian'

@@ -23,7 +23,7 @@
 node.default['nginx']['passenger']['version'] = '4.0.45'
 node.default['nginx']['passenger']['root'] = "/usr/local/rvm/gems/ruby-2.1.2/gems/passenger-#{node['nginx']['passenger']['version']}"
 node.default['nginx']['passenger']['ruby'] = '/usr/local/rvm/gems/ruby-2.1.2/wrappers/ruby'
-node.default['nginx']['passenger']['gem_home'] = '/usr/local/rvm/gems/ruby-2.1.2' # don't forget to change it in recipes/passenger.rb
+node.default['nginx']['passenger']['gem_home'] = '/usr/local/rvm/gems/ruby-2.1.2'
 node.default['nginx']['passenger']['gem_binary'] = '/usr/local/rvm/rubies/ruby-2.1.2/bin/gem'
 
 # if node['languages'].attribute?('ruby')

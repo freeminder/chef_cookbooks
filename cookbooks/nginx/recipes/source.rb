@@ -35,7 +35,7 @@ unless node['nginx']['source']['use_existing_user']
   user node['nginx']['user'] do
     system true
     shell  '/bin/false'
-    home   '/var/www'
+    home   '/srv/www'
   end
 end
 
@@ -113,52 +113,52 @@ bash 'compile_nginx_source' do
   notifies :reload,  'ohai[reload_nginx]', :immediately
 end
 
-case node['nginx']['init_style']
-when 'runit'
-  node.set['nginx']['src_binary'] = node['nginx']['binary']
-  include_recipe 'runit::default'
+# case node['nginx']['init_style']
+# when 'runit'
+#   node.set['nginx']['src_binary'] = node['nginx']['binary']
+#   include_recipe 'runit::default'
 
-  runit_service 'nginx'
+#   runit_service 'nginx'
 
-  service 'nginx' do
-    supports       :status => true, :restart => true, :reload => true
-    reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/nginx"
-  end
-when 'bluepill'
-  include_recipe 'bluepill::default'
+#   service 'nginx' do
+#     supports       :status => true, :restart => true, :reload => true
+#     reload_command "#{node['runit']['sv_bin']} hup #{node['runit']['service_dir']}/nginx"
+#   end
+# when 'bluepill'
+#   include_recipe 'bluepill::default'
 
-  template "#{node['bluepill']['conf_dir']}/nginx.pill" do
-    source 'nginx.pill.erb'
-    mode   '0644'
-  end
+#   template "#{node['bluepill']['conf_dir']}/nginx.pill" do
+#     source 'nginx.pill.erb'
+#     mode   '0644'
+#   end
 
-  bluepill_service 'nginx' do
-    action [:enable, :load]
-  end
+#   bluepill_service 'nginx' do
+#     action [:enable, :load]
+#   end
 
-  service 'nginx' do
-    supports       :status => true, :restart => true, :reload => true
-    reload_command "[[ -f #{node['nginx']['pid']} ]] && kill -HUP `cat #{node['nginx']['pid']}` || true"
-    action         :nothing
-  end
-when 'upstart'
-  # we rely on this to set up nginx.conf with daemon disable instead of doing
-  # it in the upstart init script.
-  node.set['nginx']['daemon_disable']  = node['nginx']['upstart']['foreground']
+#   service 'nginx' do
+#     supports       :status => true, :restart => true, :reload => true
+#     reload_command "[[ -f #{node['nginx']['pid']} ]] && kill -HUP `cat #{node['nginx']['pid']}` || true"
+#     action         :nothing
+#   end
+# when 'upstart'
+#   # we rely on this to set up nginx.conf with daemon disable instead of doing
+#   # it in the upstart init script.
+#   node.set['nginx']['daemon_disable']  = node['nginx']['upstart']['foreground']
 
-  template '/etc/init/nginx.conf' do
-    source 'nginx-upstart.conf.erb'
-    owner  'root'
-    group  node['root_group']
-    mode   '0644'
-  end
+#   template '/etc/init/nginx.conf' do
+#     source 'nginx-upstart.conf.erb'
+#     owner  'root'
+#     group  node['root_group']
+#     mode   '0644'
+#   end
 
-  service 'nginx' do
-    provider Chef::Provider::Service::Upstart
-    supports :status => true, :restart => true, :reload => true
-    action   :nothing
-  end
-else
+#   service 'nginx' do
+#     provider Chef::Provider::Service::Upstart
+#     supports :status => true, :restart => true, :reload => true
+#     action   :nothing
+#   end
+# else
   node.set['nginx']['daemon_disable'] = false
 
   generate_init = true
@@ -196,7 +196,7 @@ else
     supports :status => true, :restart => true, :reload => true
     action   :enable
   end
-end
+# end
 
 node.run_state.delete('nginx_configure_flags')
 node.run_state.delete('nginx_force_recompile')

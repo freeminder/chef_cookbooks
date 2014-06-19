@@ -28,20 +28,25 @@ unless packages.empty?
   end
 end
 
-# execute "Install Phusion Passenger" do
-#   user "root"
-#   command "/bin/bash -e /usr/local/rvm/scripts/rvm && gem install passenger"
-# end
 
-# gem_package 'rake'
+gem_package 'rake' do
+  action     :install
+  options    "--install-dir #{node['nginx']['passenger']['gem_home']}"
+  gem_binary node['nginx']['passenger']['gem_binary'] if node['nginx']['passenger']['gem_binary']
+end
 
 gem_package 'passenger' do
   action     :install
-  options    "--install-dir /usr/local/rvm/gems/ruby-2.1.2"
-  #options    --install-dir "#{node.default['nginx']['passenger']['gem_home']}"
+  options    "--install-dir #{node['nginx']['passenger']['gem_home']}"
   version    node['nginx']['passenger']['version']
   gem_binary node['nginx']['passenger']['gem_binary'] if node['nginx']['passenger']['gem_binary']
 end
+
+# execute "Phusion Passenger final install" do
+#   user "deploy"
+#   command "cd /usr/local/rvm/gems/ruby-2.1.2/gems/passenger-4.0.45 && rvmsudo_secure_path=1 rvmsudo rake nginx"
+# end
+
 
 template "#{node["nginx"]["dir"]}/conf.d/passenger.conf" do
   source 'modules/passenger.conf.erb'

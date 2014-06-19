@@ -72,10 +72,6 @@ end
 	end
 end
 
-# execute "Phusion Passenger final install" do
-# 	user "root"
-# 	command "cd /usr/local/rvm/gems/ruby-2.1.2/gems/passenger-4.0.45 && export rvmsudo_secure_path=1 rvmsudo rake nginx"
-# end
 
 # NGINX CONFIG
 template '/etc/nginx/nginx.conf' do
