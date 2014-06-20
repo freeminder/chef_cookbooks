@@ -42,10 +42,9 @@ gem_package 'passenger' do
   gem_binary node['nginx']['passenger']['gem_binary'] if node['nginx']['passenger']['gem_binary']
 end
 
-# execute "Phusion Passenger final install" do
-#   user "deploy"
-#   command "cd /usr/local/rvm/gems/ruby-2.1.2/gems/passenger-4.0.45 && rvmsudo_secure_path=1 rvmsudo rake nginx"
-# end
+execute "Phusion Passenger final install" do
+  command "cd #{node["nginx"]["passenger"]["root"]} && rvmsudo_secure_path=1 /usr/local/rvm/bin/rvmsudo rake nginx"
+end
 
 
 template "#{node["nginx"]["dir"]}/conf.d/passenger.conf" do
