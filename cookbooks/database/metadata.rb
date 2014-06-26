@@ -1,0 +1,15 @@
+name 'database'
+maintainer 'Dmitry Zhukov'
+maintainer_email 'dmitry.zhukov@gmail.com'
+license 'Apache 2.0'
+description 'Configures database components and replication between servers.'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version '0.0.1'
+
+supports 'ubuntu'
+supports 'debian'
+supports 'redhat'
+supports 'centos'
+supports 'scientific'
+supports 'amazon'
+supports 'fedora'

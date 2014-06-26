@@ -35,6 +35,12 @@ gem_package 'rake' do
   gem_binary node['nginx']['passenger']['gem_binary'] if node['nginx']['passenger']['gem_binary']
 end
 
+gem_package 'rack' do
+  action     :install
+  options    "--install-dir #{node['nginx']['passenger']['gem_home']}"
+  gem_binary node['nginx']['passenger']['gem_binary'] if node['nginx']['passenger']['gem_binary']
+end
+
 gem_package 'passenger' do
   action     :install
   options    "--install-dir #{node['nginx']['passenger']['gem_home']}"
