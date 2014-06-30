@@ -2,6 +2,7 @@ name "base"
 description "Base role for a server"
 run_list(
   "recipe[unattended-upgrades::default]",
+  "recipe[simple_iptables]",
   "recipe[misc::default]"
 )
 # default_attributes(

@@ -74,13 +74,22 @@ cron "swapbreak" do
 end
 
 
-# Install SSL cert&key
+# Install SSL cert&key for nginx
 %w{ dev.swapslider.com.crt dev.swapslider.com.key }.each do |file|
 	cookbook_file "/etc/nginx/#{file}" do
 		mode '0600'
 		owner 'deploy'
 		group 'www-data'
 	end
+end
+
+# Setup SSL for access to Percona XtraDB Cluster
+%w{ ca.pem client-cert.pem client-key.pem }.each do |file|
+  cookbook_file "/etc/mysql/#{file}" do
+    mode '0640'
+    owner 'root'
+    group 'www-data'
+  end
 end
 
 
@@ -98,11 +107,11 @@ end
 # end
 
 
-# cookbook_file "#{node.default['app']['app_path']}/shared/bin/resque_service.rb" do
-# 	mode '0755'
-# 	owner 'deploy'
-# 	group 'www-data'
-# end
+cookbook_file "#{node.default['app']['app_path']}/shared/bin/rsq_restart.rb" do
+	mode '0755'
+	owner 'deploy'
+	group 'www-data'
+end
 
 # execute "resque service" do
 # 	user "deploy"

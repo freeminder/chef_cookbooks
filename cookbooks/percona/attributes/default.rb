@@ -5,7 +5,7 @@
 
 ::Chef::Node.send(:include, Opscode::OpenSSL::Password)
 
-version = default["percona"]["version"] = "5.5"
+version = default["percona"]["version"] = "5.6"
 
 # Always restart percona on configuration changes
 default["percona"]["auto_restart"] = true
@@ -67,7 +67,7 @@ default["percona"]["server"]["net_read_timeout"]                = 120
 default["percona"]["server"]["connect_timeout"]                 = 10
 default["percona"]["server"]["wait_timeout"]                    = 28_800
 default["percona"]["server"]["old_passwords"]                   = 0
-default["percona"]["server"]["bind_address"]                    = "127.0.0.1"
+default["percona"]["server"]["bind_address"]                    = "0.0.0.0"
 %w[debian_password root_password].each do |attribute|
   next if attribute?(node["percona"]["server"][attribute])
   default["percona"]["server"][attribute]                       = secure_password
@@ -153,14 +153,15 @@ unless attribute?(node["percona"]["backup"]["password"])
 end
 
 # XtraDB Cluster Settings
-default["percona"]["cluster"]["package"]                        = "percona-xtradb-cluster-55"
+default["percona"]["cluster"]["package"]                        = "percona-xtradb-cluster-full-56"
 default["percona"]["cluster"]["binlog_format"]                  = "ROW"
 default["percona"]["cluster"]["wsrep_provider"]                 = "/usr/lib/libgalera_smm.so"
 default["percona"]["cluster"]["wsrep_provider_options"]         = "socket.ssl_cert=/etc/mysql/cert.pem; socket.ssl_key=/etc/mysql/key.pem"
-default["percona"]["cluster"]["wsrep_cluster_address"]          = "gcomm://10.0.4.75,10.0.4.200,10.0.4.198"
+default["percona"]["cluster"]["wsrep_cluster_address"]          = "gcomm://"
 default["percona"]["cluster"]["wsrep_slave_threads"]            = 2
 default["percona"]["cluster"]["wsrep_cluster_name"]             = ""
-default["percona"]["cluster"]["wsrep_sst_method"]               = "rsync"
+default["percona"]["cluster"]["wsrep_sst_method"]               = "xtrabackup-v2"
+default["percona"]["cluster"]["wsrep_sst_auth"]                 = ""
 default["percona"]["cluster"]["wsrep_node_name"]                = ""
 default["percona"]["cluster"]["wsrep_notify_cmd"]               = ""
 
@@ -170,3 +171,7 @@ default["percona"]["cluster"]["wsrep_sst_receive_port"]         = "4444"
 
 default["percona"]["cluster"]["innodb_locks_unsafe_for_binlog"] = 1
 default["percona"]["cluster"]["innodb_autoinc_lock_mode"]       = 2
+
+# Database Settings
+default["percona"]["swapslider"]["db_username"]                 = "sliderdb"
+

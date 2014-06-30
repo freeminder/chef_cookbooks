@@ -67,21 +67,17 @@ wait_timeout     = <%= node["percona"]["server"]["wait_timeout"] %>
 binlog_format                  = <%= node["percona"]["cluster"]["binlog_format"] %>
 wsrep_provider                 = <%= node["percona"]["cluster"]["wsrep_provider"] %>
 wsrep_provider_options         = "<%= node["percona"]["cluster"]["wsrep_provider_options"] %>"
-wsrep_cluster_address          = <%= node.default["percona"]["cluster"]["wsrep_cluster_address"] %>
+wsrep_cluster_address          = <%= node["percona"]["cluster"]["wsrep_cluster_address"] %>
 wsrep_slave_threads            = <%= node["percona"]["cluster"]["wsrep_slave_threads"] %>
 wsrep_cluster_name             = <%= node["percona"]["cluster"]["wsrep_cluster_name"] %>
 wsrep_sst_method               = <%= node["percona"]["cluster"]["wsrep_sst_method"] %>
+wsrep_sst_auth                 = "<%= node["percona"]["cluster"]["wsrep_sst_auth"] %>"
 wsrep_node_name                = <%= node["percona"]["cluster"]["wsrep_node_name"] %>
 wsrep_notify_cmd               = <%= node["percona"]["cluster"]["wsrep_notify_cmd"] %>
 wsrep_sst_receive_address      = <%= node["percona"]["cluster"]["wsrep_sst_receive_address"] %>
 innodb_locks_unsafe_for_binlog = <%= node["percona"]["cluster"]["innodb_locks_unsafe_for_binlog"] %>
 innodb_autoinc_lock_mode       = <%= node["percona"]["cluster"]["innodb_autoinc_lock_mode"] %>
 
-
-#
-# For compatibility to other Debian packages that still use
-# libmysqlclient10 and libmysqlclient12.
-#old_passwords = <%= @old_passwords %>
 
 #
 # Instead of skip-networking the default is now to listen only on
@@ -162,9 +158,9 @@ max_binlog_size  = <%= node["percona"]["server"]["max_binlog_size"] %>
 #
 # For generating SSL certificates I recommend the OpenSSL GUI "tinyca".
 #
-# ssl-ca=/etc/mysql/cacert.pem
-# ssl-cert=/etc/mysql/server-cert.pem
-# ssl-key=/etc/mysql/server-key.pem
+ssl-ca=/etc/mysql/ca.pem
+ssl-cert=/etc/mysql/server-cert.pem
+ssl-key=/etc/mysql/server-key.pem
 
 
 

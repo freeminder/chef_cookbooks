@@ -13,8 +13,8 @@ default_attributes(
     },
 
     "cluster" => {
-      "package"                     => "percona-xtradb-cluster-55",
-      "wsrep_cluster_name"          => "percona_cluster_1",
+      "package"                     => "percona-xtradb-cluster-56",
+      "wsrep_cluster_name"          => "xps_swapslider",
       "wsrep_sst_receive_interface" => "eth0" # can be eth0, public, private, etc.
     }
   }

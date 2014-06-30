@@ -11,6 +11,9 @@ mysqld  = (conf && conf["mysqld"]) || {}
 # construct an encrypted passwords helper -- giving it the node and bag name
 passwords = EncryptedPasswords.new(node, percona["encrypted_data_bag"])
 
+wsrep_sst_auth = "backup:#{passwords.backup_password}"
+node.override["percona"]["cluster"]["wsrep_sst_auth"] = wsrep_sst_auth
+
 template "/root/.my.cnf" do
   variables(root_password: passwords.root_password)
   owner "root"
@@ -80,22 +83,12 @@ end
 
 
 # setup ssl
-cookbook_file "/etc/mysql/key.pem" do
-  owner "root"
-  group "mysql"
-  mode "0640"
-  # if node["percona"]["auto_restart"]
-  #   notifies :restart, "service[mysql]", :immediately
-  # end
-end
-
-cookbook_file "/etc/mysql/cert.pem" do
-  owner "root"
-  group "mysql"
-  mode "0640"
-  # if node["percona"]["auto_restart"]
-  #   notifies :restart, "service[mysql]", :immediately
-  # end
+%w{ ca.pem  cert.pem  client-cert.pem  client-key-enc.pem  client-key.pem  key.pem  server-cert.pem  server-key-enc.pem  server-key.pem }.each do |file|
+  cookbook_file "/etc/mysql/#{file}" do
+    mode '0640'
+    owner 'root'
+    group 'mysql'
+  end
 end
 
 
@@ -132,3 +125,12 @@ template "/etc/mysql/debian.cnf" do
   end
   only_if { platform_family?("debian") }
 end
+
+# remove default configuration
+file "/etc/mysql/my.cnf" do
+  action :delete
+  if node["percona"]["auto_restart"]
+    notifies :restart, "service[mysql]", :immediately
+  end
+end
+

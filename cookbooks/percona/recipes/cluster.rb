@@ -17,7 +17,6 @@ end
 # install packages
 case node["platform_family"]
 when "debian"
-  package "percona-xtradb-cluster-galera-2"
   package node["percona"]["cluster"]["package"] do
     # The package starts up immediately, then additional config is added and the
     # restart command fails to work. Instead, stop the database before changing
@@ -33,6 +32,7 @@ when "rhel"
 end
 
 include_recipe "percona::configure_server"
+
 
 # access grants
 include_recipe "percona::access_grants" unless node["percona"]["skip_passwords"]
