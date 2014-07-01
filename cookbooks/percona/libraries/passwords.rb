@@ -52,6 +52,10 @@ class Chef
       find_password "mysql", backup["username"], backup["password"]
     end
 
+    def sliderdb_password
+      find_password "swapslider", "sliderdb", node_server[:sliderdb_password]
+    end
+
     private
 
     # helper
