@@ -29,3 +29,4 @@ end
 node['nginx']['default']['modules'].each do |ngx_module|
   include_recipe "nginx::#{ngx_module}"
 end
+

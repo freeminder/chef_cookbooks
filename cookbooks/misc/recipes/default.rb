@@ -70,6 +70,36 @@ execute "Remove hosts_append" do
 	command "rm /tmp/hosts_append.conf"
 end
 
+# APPEND /etc/bash.bashrc
+template "/tmp/bashrc_append.conf" do
+	source "bashrc_append.erb"
+end
+
+execute "Append bashrc with new aliases" do
+	user "root"
+	command "cat /tmp/bashrc_append.conf >> /etc/bash.bashrc"
+end
+
+execute "Remove bashrc_append" do
+	command "rm /tmp/bashrc_append.conf"
+end
+
+# Midnight Commander dark theme
+directory '/root/.local/share/mc/skins' do
+	mode '0755'
+	owner 'root'
+	group 'root'
+	action :create
+	recursive true
+end
+
+cookbook_file '/root/.local/share/mc/skins/ajnasz-blue.ini' do
+	mode '0640'
+	owner 'root'
+	group 'root'
+	source 'ajnasz-blue.ini'
+end
+
 
 # Remote agent for Sublime Text
 execute "Download and make executable rsub" do

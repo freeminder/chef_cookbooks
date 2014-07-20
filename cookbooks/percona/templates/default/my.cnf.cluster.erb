@@ -83,7 +83,7 @@ innodb_autoinc_lock_mode       = <%= node["percona"]["cluster"]["innodb_autoinc_
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
 <% if !node["percona"]["server"]["bind_address"].empty? %>
-bind-address = <%= node["percona"]["server"]["bind_address"] %>
+#!!#bind-address = <%= node["percona"]["server"]["bind_address"] %>
 <% end %>
 
 #

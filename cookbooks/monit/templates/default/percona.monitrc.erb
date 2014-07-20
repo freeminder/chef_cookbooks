@@ -1,0 +1,12 @@
+check process mysql with pidfile /var/run/mysqld/mysqld.pid
+	group mysql
+	start program = "/usr/sbin/service mysql start"
+	stop program = "/usr/sbin/service mysql stop"
+	if failed unixsocket /var/run/mysqld/mysqld.sock then restart
+#	if failed host <%= node["ipaddress"] %> port 3306 protocol mysql then restart
+	if changed pid then alert
+	if total memory > 50% for 5 cycles then restart
+	if total cpu > 80% for 5 cycles then restart
+	if 6 restarts within 26 cycles then alert
+	if 5 restarts within 5 cycles then timeout
+

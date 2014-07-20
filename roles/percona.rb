@@ -3,7 +3,8 @@ description "Percona XtraDB Cluster"
 
 run_list(
   "role[base]",
-  'recipe[percona::percona]'
+  'recipe[percona::percona]',
+  "recipe[monit::percona]"
 )
 
 default_attributes(

@@ -12,8 +12,6 @@ end
 
 # INSTALL AND DEFINE SERVICES
 package 'imagemagick'
-package 'redis-server'
-package 'monit'
 gem_package 'bundler'
 
 

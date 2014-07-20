@@ -1,0 +1,60 @@
+# Polling frequency
+set daemon <%= node["monit"]["polling_frequency"] %>
+<% if node["monit"]["start_delay"].to_i > 0 %>
+  with start delay <%= node["monit"]["start_delay"].to_i %>
+<% end -%>
+
+# Logging
+<% if node["monit"]["use_syslog"] %>
+set logfile syslog facility log_daemon
+<% elsif node["monit"]["logfile"] %>
+set logfile <%= node["monit"]["logfile"] %>
+<% end %>
+
+# Set location of Monit id file
+<% if node["monit"]["idfile"] %>
+set idfile <%= node["monit"]["idfile"] %>
+<% end %>
+
+# Set location of Monit state file
+<% if node["monit"]["statefile"] %>
+set statefile <%= node["monit"]["statefile"] %>
+<% end %>
+
+<% if node['monit']['mail_alerts'] %>
+# Mail alerts
+set alert <%= node["monit"]["alert_email"] %> <%= node["monit"]["alert_ignore_events"].empty? ? "" : "but not on { #{node["monit"]["alert_ignore_events"].join(", ")} }" %>
+<% end %>
+
+set mailserver <%= node["monit"]["mail"]["hostname"] %> port <%= node["monit"]["mail"]["port"] %>
+  <% if node["monit"]["mail"]["username"] -%>
+  username "<%= node["monit"]["mail"]["username"] %>"
+  <% end -%>
+  <% if node["monit"]["mail"]["password"] -%>
+  password "<%= node["monit"]["mail"]["password"] %>"
+  <% end -%>
+<% if node["monit"]["mail"]["security"] -%>
+    using <%= node["monit"]["mail"]["security"] %>
+<% end -%>
+  with timeout <%= node["monit"]["mail"]["timeout"] %> seconds
+<% if node["monit"]["mail"]["using_hostname"] -%>
+    using hostname <%= node["monit"]["mail"]["using_hostname"] %>
+<% end -%>
+
+set mail-format {
+  from: <%= node["monit"]["mail"]["from"] %>
+  subject: <%= node["monit"]["mail"]["subject"] %>
+  message: <%= node["monit"]["mail"]["message"] %>
+}
+
+<% if node["monit"]["web_interface"]["enable"] %>
+# Web interface
+set httpd port <%= node["monit"]["web_interface"]["port"] %>
+  <% if node["monit"]["web_interface"]["address"] %>use address <%= node["monit"]["web_interface"]["address"] %><% end %>
+  <% node["monit"]["web_interface"]["allow"].each do |allow| -%>
+  allow <%= allow %>
+  <% end %>
+<% end %>
+
+# Include config files
+include <%= node["monit"]["includes_dir"] %>/*
