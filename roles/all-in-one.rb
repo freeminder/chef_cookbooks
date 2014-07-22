@@ -5,12 +5,10 @@ run_list(
   "recipe[app::user_deploy]",
   "recipe[rvm::system]",
   "recipe[nginx::source]",
-  "recipe[monit::nginx]",
   "recipe[app::default]",
   'recipe[percona::all-in-one]',
-  "recipe[monit::percona]",
   'recipe[redisio::all-in-one]',
-  "recipe[monit::redis]"
+  "recipe[monit::nginx]", "recipe[monit::percona]", "recipe[monit::redis]"
 )
 
 default_attributes(
