@@ -23,8 +23,23 @@ directory "#{node.default['app']['app_path']}" do
 	recursive true
 end
 
+directory "#{node.default['app']['app_dc_path']}" do
+	mode '0755'
+	owner "deploy"
+	group "www-data"
+	recursive true
+end
+
+
 %w{ releases shared }.each do |dir|
 	directory "#{node.default['app']['app_path']}/#{dir}" do
+		mode '0755'
+		owner 'deploy'
+		group 'www-data'
+		action :create
+		recursive true
+	end
+	directory "#{node.default['app']['app_dc_path']}/#{dir}" do
 		mode '0755'
 		owner 'deploy'
 		group 'www-data'

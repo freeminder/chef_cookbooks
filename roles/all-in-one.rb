@@ -7,7 +7,7 @@ run_list(
   "recipe[nginx::source]",
   "recipe[app::default]",
   'recipe[percona::all-in-one]',
-  'recipe[redisio::all-in-one]',
+  'recipe[redisio::master]',
   "recipe[monit::nginx]", "recipe[monit::percona]", "recipe[monit::redis]"
 )
 

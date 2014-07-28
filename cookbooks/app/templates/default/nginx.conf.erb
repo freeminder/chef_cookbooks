@@ -106,4 +106,17 @@ http {
 	}
 
 	<% end %>
+
+	server {
+		listen 80;
+		server_name candy.swapslider.com;
+		root <%= node.default['app']['app_dc_path'] %>/current/public;
+		client_max_body_size 128M;
+		passenger_enabled on;
+		location ~ ^/(assets|images|javascripts|stylesheets|system)/ {
+			expires max;
+			add_header Cache-Control public;
+		}
+	}
+
 }
