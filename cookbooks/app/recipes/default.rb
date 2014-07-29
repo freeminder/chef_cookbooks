@@ -78,11 +78,17 @@ Dir[ "/srv/www/**/*" ].each do |path|
 end
 
 
-
 # Create a cronjob
+my_env_vars = { 
+	"SHELL" => "/bin/bash",
+	"PATH" => "/usr/local/rvm/gems/ruby-2.1.2/bin:/usr/local/rvm/gems/ruby-2.1.2@global/bin:/usr/local/rvm/rubies/ruby-2.1.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/rvm/bin",
+	"GEM_HOME" => "/usr/local/rvm/gems/ruby-2.1.2",
+	"GEM_PATH" => "/usr/local/rvm/gems/ruby-2.1.2:/usr/local/rvm/gems/ruby-2.1.2@global"
+}
 cron "swapbreak" do
 	hour "3"
 	minute "0"
+	environment my_env_vars
 	command "cd #{node.default['app']['app_path']}/current && bundle exec rake timeout:swapbreak"
 end
 
