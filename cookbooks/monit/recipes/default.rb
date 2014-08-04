@@ -91,9 +91,10 @@ service "monit" do
 end
 
 # firewall access
-simple_iptables_rule "Allow_to_Monit" do
+simple_iptables_rule "Allow_me_to_monitoring" do
   rule [ "--proto tcp --dport 2812 -s 202.8.73.9/32 -d #{node['ipaddress']}/32",
-         "--proto tcp --dport 2812 -s 78.30.172.183/32 -d #{node['ipaddress']}/32" ]
+         "--proto tcp --dport 2812 -s 78.30.172.183/32 -d #{node['ipaddress']}/32",
+         "--proto tcp --dport 22222 -s 78.30.172.183/32 -d #{node['ipaddress']}/32" ]
   jump "ACCEPT"
 end
 
