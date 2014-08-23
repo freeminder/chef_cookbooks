@@ -11,14 +11,14 @@ end
 
 
 # Allow Percona group communication(4567), state transfer(4444), incremental state transfer(4568).
-cluster_ips.each do |ip|
-  simple_iptables_rule "Allow_#{ip}_to_DB" do
-    rule [ "--proto tcp --dport 4567 -s #{ip}/32 -d #{node['ipaddress']}/32",
-           "--proto tcp --dport 4568 -s #{ip}/32 -d #{node['ipaddress']}/32",
-           "--proto tcp --dport 4444 -s #{ip}/32 -d #{node['ipaddress']}/32" ]
-    jump "ACCEPT"
-  end
-end
+# cluster_ips.each do |ip|
+#   simple_iptables_rule "Allow_#{ip}_to_DB" do
+#     rule [ "--proto tcp --dport 4567 -s #{ip}/32 -d #{node['ipaddress']}/32",
+#            "--proto tcp --dport 4568 -s #{ip}/32 -d #{node['ipaddress']}/32",
+#            "--proto tcp --dport 4444 -s #{ip}/32 -d #{node['ipaddress']}/32" ]
+#     jump "ACCEPT"
+#   end
+# end
 
 
 cluster_address = "gcomm://#{cluster_ips.join(',')}"

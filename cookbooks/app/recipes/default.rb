@@ -91,6 +91,18 @@ cron "swapbreak" do
 	environment my_env_vars
 	command "cd #{node.default['app']['app_path']}/current && bundle exec rake timeout:swapbreak"
 end
+cron "notify_immature" do
+	hour "*/03"
+	minute "0"
+	environment my_env_vars
+	command "cd #{node.default['app']['app_path']}/current && rake phones:notify_immature"
+end
+cron "sync_time" do
+	hour "1"
+	minute "0"
+	environment my_env_vars
+	command "ntpdate pool.ntp.org"
+end
 
 
 # Install SSL cert&key for nginx
@@ -132,6 +144,7 @@ cookbook_file "#{node.default['app']['app_path']}/shared/bin/rsq_restart.rb" do
 	group 'www-data'
 end
 
+
 # execute "resque service" do
 # 	user "deploy"
 # 	command "ruby #{node.default['app']['app_path']}/shared/bin/resque_service.rb"
@@ -146,3 +159,7 @@ end
 #	 group 'root'
 #	 content "OK\n"
 # end
+
+
+include_recipe 'app::firewall'
+

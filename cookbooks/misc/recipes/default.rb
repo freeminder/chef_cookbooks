@@ -3,6 +3,8 @@ package 'mc'
 package 'wget'
 package 'curl'
 package 'git'
+package 'ipset'
+package 'sysv-rc-conf' if node['platform_family'] == 'debian'
 
 
 # PATCH /etc/inputrc
@@ -143,13 +145,18 @@ end
 
 
 
+# PATCH /etc/rc.local
+cookbook_file '/etc/rc.local' do
+	mode '0755'
+	owner 'root'
+	group 'root'
+end
 
+ruby_block "insert_line" do
+	block do
+		file = Chef::Util::FileEdit.new("/etc/rc.local")
+		file.insert_line_if_no_match(/jobs/, 'su - deploy -c "nohup /srv/www/sliderapp/current/bin/rake jobs:work &"')
+		file.write_file
+	end
+end
 
-# PATCH /etc/hosts
-# ruby_block "insert_line" do
-# 	block do
-# 		file = Chef::Util::FileEdit.new("/etc/hosts")
-# 		file.insert_line_if_no_match("/chef/", "10.42.0.6	chef-server.local	chef-server")
-# 		file.write_file
-# 	end
-# end

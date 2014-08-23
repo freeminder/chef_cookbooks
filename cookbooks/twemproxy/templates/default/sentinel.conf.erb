@@ -1,0 +1,18 @@
+daemonize yes
+logfile "/var/log/sentinel.log"
+
+sentinel monitor master1 172.31.38.177 6379 4
+sentinel down-after-milliseconds master1 10000
+sentinel failover-timeout master1 180000
+sentinel parallel-syncs master1 5
+
+sentinel monitor master2 172.31.47.1 6379 4
+sentinel down-after-milliseconds master2 10000
+sentinel failover-timeout master2 180000
+sentinel parallel-syncs master2 5
+
+sentinel monitor master3 172.31.42.198 6379 4
+sentinel down-after-milliseconds master3 60000
+sentinel failover-timeout master3 180000
+sentinel parallel-syncs master3 5
+
