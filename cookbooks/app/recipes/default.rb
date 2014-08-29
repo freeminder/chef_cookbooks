@@ -101,7 +101,7 @@ cron "sync_time" do
 	hour "1"
 	minute "0"
 	environment my_env_vars
-	command "ntpdate pool.ntp.org"
+	command "ntpdate -s pool.ntp.org"
 end
 
 

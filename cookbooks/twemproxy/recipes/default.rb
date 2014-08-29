@@ -24,30 +24,7 @@ service "nutcracker" do
 end
 
 
-# Sentinel
-execute "touch /var/log/sentinel.log; chown redis /var/log/sentinel.log" do
-  not_if { File.exist?("/var/log/sentinel.log") }
-end
-
-template "sentinel" do
-  path "/etc/init.d/sentinel"
-  source "sentinel.init.erb"
-  mode 0755
-end
-
-template "sentinel-conf" do
-		path "/etc/redis/sentinel.conf"
-    source "sentinel.conf.erb"
-    mode 0666
-    notifies :stop, "service[sentinel]"
-    notifies :start, "service[sentinel]"
-end
-
-service "sentinel" do
-    action [:enable, :start]
-    supports :start => true, :stop => true
-    subscribes :start, resources(:template => "sentinel-conf")
-end
+include_recipe "twemproxy::sentinel"
 
 
 # # Redis-mgr

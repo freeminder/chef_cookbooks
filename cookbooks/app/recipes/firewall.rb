@@ -21,15 +21,15 @@ cookbook_file '/etc/ipset' do
 	 group 'root'
 end
 
-node_ips.each do |ip|
-		ruby_block "insert_line" do
-			block do
-				file = Chef::Util::FileEdit.new("/etc/ipset")
-				file.insert_line_if_no_match("/#{ip}/", "add servers #{ip}")
-				file.write_file
-			end
-	end
-end
+# node_ips.each do |ip|
+# 		ruby_block "insert_line" do
+# 			block do
+# 				file = Chef::Util::FileEdit.new("/etc/ipset")
+# 				file.insert_line_if_no_match("add servers #{ip}", "add servers #{ip}")
+# 				file.write_file
+# 			end
+# 	end
+# end
 
 execute "Import ipset list" do
 	user "root"

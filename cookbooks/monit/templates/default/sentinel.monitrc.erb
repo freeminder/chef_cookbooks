@@ -1,0 +1,10 @@
+check process sentinel
+    with pidfile "/var/run/redis/sentinel/redis_sentinel.pid"
+    start program = "/etc/init.d/sentinel start"
+    stop program = "/etc/init.d/sentinel stop"
+    if 2 restarts within 3 cycles then timeout
+    if totalmem > 1000 Mb then alert
+    if children > 2550 for 5 cycles then stop
+    if cpu usage > 95% for 3 cycles then restart
+    if failed host <%= node["ipaddress"] %> port 26379 then restart
+    if 5 restarts within 5 cycles then timeout

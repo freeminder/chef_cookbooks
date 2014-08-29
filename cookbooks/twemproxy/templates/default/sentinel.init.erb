@@ -46,7 +46,7 @@ case "$1" in
                 echo "Stopping ..."
 
                                  
-                $CLIEXEC  shutdown
+                $CLIEXEC -p 26379 shutdown
 
                 while [ -x /proc/${PID} ]
                 do

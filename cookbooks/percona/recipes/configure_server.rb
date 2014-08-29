@@ -108,7 +108,8 @@ end
 unless node["percona"]["skip_passwords"]
   execute "Update MySQL root password" do
     root_pw = passwords.root_password
-    command "mysqladmin --user=root --password='' password '#{root_pw}'"
+    user "root"
+    command "mysqladmin --user=root password '#{root_pw}'"
     not_if "test -f /etc/mysql/grants.sql"
   end
 end
