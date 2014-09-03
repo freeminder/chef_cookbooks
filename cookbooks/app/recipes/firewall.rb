@@ -15,10 +15,11 @@ end
 
 
 # ipset
-cookbook_file '/etc/ipset' do
-	 mode '0644'
-	 owner 'root'
-	 group 'root'
+cookbook_file "/etc/ipset" do
+	source "ipset"
+	mode '0644'
+	owner 'root'
+	group 'root'
 end
 
 # node_ips.each do |ip|
@@ -34,18 +35,13 @@ end
 execute "Import ipset list" do
 	user "root"
 	command "ipset restore < /etc/ipset"
+	only_if { File.exist?("/etc/ipset") }
 end
 
 
 # Allow access from other nodes
 simple_iptables_rule "Allow_servers" do
 	rule [ "-m set --match-set servers src" ]
-	jump "ACCEPT"
-end
-
-# Allow access from Jenkins
-simple_iptables_rule "Allow_Jenkins" do
-	rule [ "-s 172.31.37.92/32 -d #{node['ipaddress']}/32" ]
 	jump "ACCEPT"
 end
 
@@ -58,6 +54,6 @@ end
 execute "reload-iptables" do
 	command "iptables-restore < /etc/iptables-rules"
 	user "root"
-	action :nothing
+	only_if { File.exist?("/etc/ipset") }
 end
 

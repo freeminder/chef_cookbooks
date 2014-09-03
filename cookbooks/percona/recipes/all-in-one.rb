@@ -21,9 +21,9 @@ end
 # end
 
 
-cluster_address = "gcomm://#{cluster_ips.join(',')}"
-Chef::Log.info "Using Percona XtraDB cluster address of: #{cluster_address}"
-node.override["percona"]["cluster"]["wsrep_cluster_address"] = cluster_address
+# cluster_address = "gcomm://#{cluster_ips.join(',')}"
+# Chef::Log.info "Using Percona XtraDB cluster address of: #{cluster_address}"
+# node.override["percona"]["cluster"]["wsrep_cluster_address"] = cluster_address
 node.override["percona"]["cluster"]["wsrep_node_name"] = node['hostname']
 
 

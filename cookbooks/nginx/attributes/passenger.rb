@@ -46,9 +46,9 @@ node.default['nginx']['passenger']['packages']['debian'] = %w(libcurl4-gnutls-de
 
 node.default['nginx']['passenger']['spawn_method'] = 'smart-lv2'
 node.default['nginx']['passenger']['buffer_response'] = 'on'
-node.default['nginx']['passenger']['max_pool_size'] = 6
-node.default['nginx']['passenger']['min_instances'] = 1
+node.default['nginx']['passenger']['max_pool_size'] = 500
+node.default['nginx']['passenger']['min_instances'] = 200
 node.default['nginx']['passenger']['max_instances_per_app'] = 0
-node.default['nginx']['passenger']['pool_idle_time'] = 300
+node.default['nginx']['passenger']['pool_idle_time'] = 150
 node.default['nginx']['passenger']['max_requests'] = 0
 # node.default['nginx']['passenger']['gem_binary'] = nil

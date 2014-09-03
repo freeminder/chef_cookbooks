@@ -9,6 +9,8 @@
 
 include_recipe "twemproxy::#{node[:twemproxy][:install_method]}"
 
+include_recipe "twemproxy::redis_incr"
+
 template "nutcracker-conf" do
     path node[:twemproxy][:config_file]
     source "nutcracker.conf.erb"
@@ -24,7 +26,8 @@ service "nutcracker" do
 end
 
 
-include_recipe "twemproxy::sentinel"
+
+# include_recipe "twemproxy::sentinel"
 
 
 # # Redis-mgr

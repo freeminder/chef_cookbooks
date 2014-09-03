@@ -25,3 +25,10 @@ service 'haproxy' do
   supports :reload => true
   action :start
 end
+
+# Allow access to backend
+simple_iptables_rule "Allow_to_APP" do
+  rule [ "-p tcp -m multiport --dports 80,443" ]
+  jump "ACCEPT"
+end
+

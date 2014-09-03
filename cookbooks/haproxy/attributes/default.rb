@@ -7,24 +7,31 @@
 
 # LIST OF SERVER NAME TO IP ADDRESS MAPPINGS + WEIGHT (RELATIVE POWER)
 node.default['pvlb']['lb_servers'] = {
-  'rails-app1' => {
-    'ipaddr' => '54.86.132.169',
-    'weight' => 10,
+  'all-in-one-04' => {
+    'ipaddr' => '54.164.38.176',
+    'weight' => 100,
   },
-  # 'rails-app2' => {
-  #   'ipaddr' => '10.0.0.2',
-  #   'weight' => 20,
-  # },
-  # 'rails-app3' => {
-  #   'ipaddr' => '10.0.0.3',
-  #   'weight' => 10,
-  # },
+  'all-in-one-05' => {
+    'ipaddr' => '192.99.47.158',
+    'weight' => 90,
+  },
+  'all-in-one-06' => {
+    'ipaddr' => '54.183.196.128',
+    'weight' => 1,
+  },
+  'all-in-one-07' => {
+    'ipaddr' => '192.99.38.175',
+    'weight' => 90,
+  },
 }
 
 # LIST OF SERVER GROUPS
 node.default['pvlb']['lb_groups'] = {
   'dev.swapslider.com' => [
-    'rails-app1'
+    'all-in-one-04',
+    'all-in-one-05',
+    'all-in-one-06',
+    'all-in-one-07'
   ],
   # 'site2' => [
   #   'web1site1',

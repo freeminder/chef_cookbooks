@@ -58,12 +58,27 @@ end
 	end
 end
 
+directory "#{node.default['app']['app_dc_path']}/shared/config" do
+	mode '0755'
+	owner 'deploy'
+	group 'www-data'
+	action :create
+	recursive true
+end
+
 %w{ database.yml local_env.yml secrets.yml }.each do |file|
 	cookbook_file "#{node.default['app']['app_path']}/shared/config/#{file}" do
 		mode '0644'
 		owner 'deploy'
 		group 'www-data'
 	end
+end
+
+cookbook_file "#{node.default['app']['app_dc_path']}/shared/config/database.yml" do
+	source 'database_dc.yml'
+	mode '0644'
+	owner 'deploy'
+	group 'www-data'
 end
 
 Dir[ "/srv/www/**/*" ].each do |path|
@@ -142,6 +157,14 @@ cookbook_file "#{node.default['app']['app_path']}/shared/bin/rsq_restart.rb" do
 	mode '0755'
 	owner 'deploy'
 	group 'www-data'
+end
+
+
+# Fix permissions for gems, especially rake
+execute "Fix permissions for gems" do
+  user "root"
+  command "chown -R :rvm /usr/local/rvm/gems/ruby-2.1.2/gems/ && chmod -R g+w /usr/local/rvm/gems/ruby-2.1.2/gems/"
+  only_if { File.exist?("/usr/local/rvm/gems/ruby-2.1.2/gems/") }
 end
 
 
