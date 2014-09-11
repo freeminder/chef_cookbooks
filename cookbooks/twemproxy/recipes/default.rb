@@ -27,7 +27,8 @@ end
 
 
 
-# include_recipe "twemproxy::sentinel"
+include_recipe "twemproxy::sentinel"
+include_recipe "twemproxy::redis-twemproxy-agent-master"
 
 
 # # Redis-mgr

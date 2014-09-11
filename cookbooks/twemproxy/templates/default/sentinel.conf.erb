@@ -1,7 +1,166 @@
-daemonize yes
 port 26379
-dir "/"
-logfile "/var/log/sentinel.log"
-pidfile "/var/run/redis/sentinel/redis_sentinel.pid"
+daemonize yes
+pidfile /var/run/redis/redis-sentinel.pid
+loglevel notice
+logfile /var/log/sentinel.log
 
-sentinel monitor master1 54.164.38.176 6379 2
+sentinel monitor redis7001 192.99.47.158 7001 1
+sentinel down-after-milliseconds redis7001 2500
+sentinel failover-timeout redis7001 10000
+sentinel parallel-syncs redis7001 1
+
+sentinel monitor redis7002 192.99.47.158 7002 1
+sentinel down-after-milliseconds redis7002 2500
+sentinel failover-timeout redis7002 10000
+sentinel parallel-syncs redis7002 1
+
+sentinel monitor redis7003 192.99.47.158 7003 1
+sentinel down-after-milliseconds redis7003 2500
+sentinel failover-timeout redis7003 10000
+sentinel parallel-syncs redis7003 1
+
+sentinel monitor redis7004 192.99.47.158 7004 1
+sentinel down-after-milliseconds redis7004 2500
+sentinel failover-timeout redis7004 10000
+sentinel parallel-syncs redis7004 1
+
+sentinel monitor redis7005 192.99.47.158 7005 1
+sentinel down-after-milliseconds redis7005 2500
+sentinel failover-timeout redis7005 10000
+sentinel parallel-syncs redis7005 1
+
+sentinel monitor redis7006 192.99.47.158 7006 1
+sentinel down-after-milliseconds redis7006 2500
+sentinel failover-timeout redis7006 10000
+sentinel parallel-syncs redis7006 1
+
+sentinel monitor redis7007 192.99.47.158 7007 1
+sentinel down-after-milliseconds redis7007 2500
+sentinel failover-timeout redis7007 10000
+sentinel parallel-syncs redis7007 1
+
+sentinel monitor redis7008 192.99.47.158 7008 1
+sentinel down-after-milliseconds redis7008 2500
+sentinel failover-timeout redis7008 10000
+sentinel parallel-syncs redis7008 1
+
+sentinel monitor redis7009 192.99.47.158 7009 1
+sentinel down-after-milliseconds redis7009 2500
+sentinel failover-timeout redis7009 10000
+sentinel parallel-syncs redis7009 1
+
+sentinel monitor redis7010 192.99.47.158 7010 1
+sentinel down-after-milliseconds redis7010 2500
+sentinel failover-timeout redis7010 10000
+sentinel parallel-syncs redis7010 1
+
+sentinel monitor redis7011 192.99.47.158 7011 1
+sentinel down-after-milliseconds redis7011 2500
+sentinel failover-timeout redis7011 10000
+sentinel parallel-syncs redis7011 1
+
+sentinel monitor redis7012 192.99.47.158 7012 1
+sentinel down-after-milliseconds redis7012 2500
+sentinel failover-timeout redis7012 10000
+sentinel parallel-syncs redis7012 1
+
+sentinel monitor redis7013 192.99.47.158 7013 1
+sentinel down-after-milliseconds redis7013 2500
+sentinel failover-timeout redis7013 10000
+sentinel parallel-syncs redis7013 1
+
+sentinel monitor redis7014 192.99.47.158 7014 1
+sentinel down-after-milliseconds redis7014 2500
+sentinel failover-timeout redis7014 10000
+sentinel parallel-syncs redis7014 1
+
+sentinel monitor redis7015 192.99.47.158 7015 1
+sentinel down-after-milliseconds redis7015 2500
+sentinel failover-timeout redis7015 10000
+sentinel parallel-syncs redis7015 1
+
+sentinel monitor redis7016 192.99.47.158 7016 1
+sentinel down-after-milliseconds redis7016 2500
+sentinel failover-timeout redis7016 10000
+sentinel parallel-syncs redis7016 1
+
+sentinel monitor redis7017 192.99.47.158 7017 1
+sentinel down-after-milliseconds redis7017 2500
+sentinel failover-timeout redis7017 10000
+sentinel parallel-syncs redis7017 1
+
+sentinel monitor redis7018 192.99.47.158 7018 1
+sentinel down-after-milliseconds redis7018 2500
+sentinel failover-timeout redis7018 10000
+sentinel parallel-syncs redis7018 1
+
+sentinel monitor redis7019 192.99.47.158 7019 1
+sentinel down-after-milliseconds redis7019 2500
+sentinel failover-timeout redis7019 10000
+sentinel parallel-syncs redis7019 1
+
+sentinel monitor redis7020 192.99.47.158 7020 1
+sentinel down-after-milliseconds redis7020 2500
+sentinel failover-timeout redis7020 10000
+sentinel parallel-syncs redis7020 1
+
+sentinel monitor redis7021 192.99.47.158 7021 1
+sentinel down-after-milliseconds redis7021 2500
+sentinel failover-timeout redis7021 10000
+sentinel parallel-syncs redis7021 1
+
+sentinel monitor redis7022 192.99.47.158 7022 1
+sentinel down-after-milliseconds redis7022 2500
+sentinel failover-timeout redis7022 10000
+sentinel parallel-syncs redis7022 1
+
+sentinel monitor redis7023 192.99.47.158 7023 1
+sentinel down-after-milliseconds redis7023 2500
+sentinel failover-timeout redis7023 10000
+sentinel parallel-syncs redis7023 1
+
+sentinel monitor redis7024 192.99.47.158 7024 1
+sentinel down-after-milliseconds redis7024 2500
+sentinel failover-timeout redis7024 10000
+sentinel parallel-syncs redis7024 1
+
+sentinel monitor redis7025 192.99.47.158 7025 1
+sentinel down-after-milliseconds redis7025 2500
+sentinel failover-timeout redis7025 10000
+sentinel parallel-syncs redis7025 1
+
+sentinel monitor redis7026 192.99.47.158 7026 1
+sentinel down-after-milliseconds redis7026 2500
+sentinel failover-timeout redis7026 10000
+sentinel parallel-syncs redis7026 1
+
+sentinel monitor redis7027 192.99.47.158 7027 1
+sentinel down-after-milliseconds redis7027 2500
+sentinel failover-timeout redis7027 10000
+sentinel parallel-syncs redis7027 1
+
+sentinel monitor redis7028 192.99.47.158 7028 1
+sentinel down-after-milliseconds redis7028 2500
+sentinel failover-timeout redis7028 10000
+sentinel parallel-syncs redis7028 1
+
+sentinel monitor redis7029 192.99.47.158 7029 1
+sentinel down-after-milliseconds redis7029 2500
+sentinel failover-timeout redis7029 10000
+sentinel parallel-syncs redis7029 1
+
+sentinel monitor redis7030 192.99.47.158 7030 1
+sentinel down-after-milliseconds redis7030 2500
+sentinel failover-timeout redis7030 10000
+sentinel parallel-syncs redis7030 1
+
+sentinel monitor redis7031 192.99.47.158 7031 1
+sentinel down-after-milliseconds redis7031 2500
+sentinel failover-timeout redis7031 10000
+sentinel parallel-syncs redis7031 1
+
+sentinel monitor redis7032 192.99.47.158 7032 1
+sentinel down-after-milliseconds redis7032 2500
+sentinel failover-timeout redis7032 10000
+sentinel parallel-syncs redis7032 1
+

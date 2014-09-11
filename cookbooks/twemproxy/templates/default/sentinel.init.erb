@@ -18,12 +18,7 @@ EXEC="sudo -u redis /usr/local/bin/redis-server /etc/redis/${REDISNAME}.conf --s
 CLIEXEC=/usr/local/bin/redis-cli
 
 
-PIDFILE=/var/run/redis/sentinel/redis_${REDISNAME}.pid
-
-if [ ! -d /var/run/redis/sentinel ]; then
-    mkdir -p /var/run/redis/sentinel
-    chown redis  /var/run/redis/sentinel
-fi
+PIDFILE=/var/run/redis/redis-${REDISNAME}.pid
 
 ulimit -n 10032
 

@@ -156,6 +156,8 @@ ruby_block "insert_line" do
 	block do
 		file = Chef::Util::FileEdit.new("/etc/rc.local")
 		file.insert_line_if_no_match(/jobs/, 'su - deploy -c "nohup /srv/www/sliderapp/current/bin/rake jobs:work &"')
+		file.insert_line_if_no_match(/ipset/, 'ipset restore < /etc/ipset')
+		file.insert_line_if_no_match(/iptables/, 'iptables-restore /etc/iptables-rules')
 		file.write_file
 	end
 end

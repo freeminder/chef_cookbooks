@@ -1,7 +1,55 @@
-<% @sections.each do |name, opts| -%>
-<%= name %>:
-<% opts[:config].each do |line| -%>
-    <%= line %>
-<% end if opts.key? :config -%>
+# <% @sections.each do |name, opts| -%>
+# <%= name %>:
+# <% opts[:config].each do |line| -%>
+#     <%= line %>
+# <% end if opts.key? :config -%>
 
-<% end -%>
+# <% end -%>
+
+######################################################################
+
+# This is an example TwemProxy config file
+# Please note the element needs to be called twem1
+twem1: 
+  listen: "0.0.0.0:22121"
+  hash: fnv1a_64
+  distribution: ketama
+  auto_eject_hosts: false
+  redis: true
+  server_retry_timeout: 100
+  server_failure_limit: 500
+  servers: 
+    - 192.99.47.158:7001:1 redis7001
+    - 192.99.47.158:7002:1 redis7002
+    - 192.99.47.158:7003:1 redis7003
+    - 192.99.47.158:7004:1 redis7004
+    - 192.99.47.158:7005:1 redis7005
+    - 192.99.47.158:7006:1 redis7006
+    - 192.99.47.158:7007:1 redis7007
+    - 192.99.47.158:7008:1 redis7008
+    - 192.99.47.158:7009:1 redis7009
+    - 192.99.47.158:7010:1 redis7010
+    - 192.99.47.158:7011:1 redis7011
+    - 192.99.47.158:7012:1 redis7012
+    - 192.99.47.158:7013:1 redis7013
+    - 192.99.47.158:7014:1 redis7014
+    - 192.99.47.158:7015:1 redis7015
+    - 192.99.47.158:7016:1 redis7016
+    - 192.99.47.158:7017:1 redis7017
+    - 192.99.47.158:7018:1 redis7018
+    - 192.99.47.158:7019:1 redis7019
+    - 192.99.47.158:7020:1 redis7020
+    - 192.99.47.158:7021:1 redis7021
+    - 192.99.47.158:7022:1 redis7022
+    - 192.99.47.158:7023:1 redis7023
+    - 192.99.47.158:7024:1 redis7024
+    - 192.99.47.158:7025:1 redis7025
+    - 192.99.47.158:7026:1 redis7026
+    - 192.99.47.158:7027:1 redis7027
+    - 192.99.47.158:7028:1 redis7028
+    - 192.99.47.158:7029:1 redis7029
+    - 192.99.47.158:7030:1 redis7030
+    - 192.99.47.158:7031:1 redis7031
+    - 192.99.47.158:7032:1 redis7032
+
+    

@@ -33,6 +33,9 @@ default["monit"]["alert_ignore_events"] = []
 # Email address that will be notified of events.
 default["monit"]["alert_email"] = "dmitry.zhukov@gmail.com"
 
+# M/Monit server url.
+default["monit"]["mmonit"] = "http://monit:Slider911!@monit.swapslider.com:8080/collector"
+
 # Enable the web interface and define credentials.
 default["monit"]["web_interface"] = {
   encrypted_credentials: "monit",

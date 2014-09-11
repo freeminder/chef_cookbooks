@@ -5,6 +5,7 @@
 case node['platform_family']
 when 'debian'
 	apt_package 'libmysqlclient-dev'
+	apt_package 'htop'
 when 'rhel', 'fedora'
 	yum_package 'mysql-devel'
 end
@@ -117,6 +118,12 @@ cron "sync_time" do
 	minute "0"
 	environment my_env_vars
 	command "ntpdate -s pool.ntp.org"
+end
+cron "restart resque:work" do
+	user "deploy"
+	minute "*/10"
+	environment my_env_vars
+	command "/srv/www/sliderapp/current/bin/rsq_restart.rb"
 end
 
 
