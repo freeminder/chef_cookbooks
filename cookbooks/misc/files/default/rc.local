@@ -1,2 +1,10 @@
 #!/bin/sh -e
 
+ipset restore < /etc/ipset
+iptables-restore /etc/iptables-rules
+
+su - deploy -c "nohup /srv/www/sliderapp/current/bin/rake jobs:work &"
+
+/etc/init.d/redis-start-all.sh
+nohup /opt/redis-twemproxy-agent-master/bin/redis_twemproxy_agent &
+
