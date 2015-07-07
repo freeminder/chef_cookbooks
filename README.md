@@ -11,4 +11,6 @@ Database servers
 
 Chef servers
 
-OpenStack nodes
+## License
+
+Please refer to [LICENSE](LICENSE).
