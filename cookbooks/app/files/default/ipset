@@ -1,0 +1,14 @@
+create admins hash:ip family inet hashsize 1024 maxelem 65536 
+add admins 202.8.73.9
+
+create servers hash:ip family inet hashsize 1024 maxelem 65536 
+
+add servers 172.31.35.46
+add servers 54.86.27.9
+add servers 54.174.42.217
+add servers 172.31.47.2
+add servers 54.183.211.73
+add servers 54.174.79.17
+add servers 54.88.139.59
+add servers 172.31.1.190
+add servers 172.31.47.218

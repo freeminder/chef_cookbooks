@@ -1,2 +1,12 @@
 /data_bags/passwords
-
+/cookbooks/app/files/default/authorized_keys
+/cookbooks/app/files/default/ca.pem
+/cookbooks/app/files/default/client-cert.pem
+/cookbooks/app/files/default/client-key.pem
+/cookbooks/app/files/default/database_dc.yml
+/cookbooks/app/files/default/dev.swapslider.com.crt
+/cookbooks/app/files/default/dev.swapslider.com.key
+/cookbooks/app/files/default/local_env.yml
+/cookbooks/app/files/default/secrets.yml
+/cookbooks/app/files/default/slider_rsa
+/cookbooks/app/files/default/slider_rsa.pub
