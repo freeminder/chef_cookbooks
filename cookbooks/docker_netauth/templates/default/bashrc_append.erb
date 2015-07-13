@@ -1,0 +1,1 @@
+<%= render "bashrc_append_original.erb" if File.readlines("/etc/bash.bashrc").grep(/mcedit/).none? %>

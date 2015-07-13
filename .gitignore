@@ -10,3 +10,10 @@
 /cookbooks/app/files/default/secrets.yml
 /cookbooks/app/files/default/slider_rsa
 /cookbooks/app/files/default/slider_rsa.pub
+/cookbooks/misc/files/default/root_rsa
+/cookbooks/misc/files/default/root_rsa.pub
+/cookbooks/misc/files/default/authorized_keys
+/cookbooks/docker_netauth/files/default/authorized_keys
+/cookbooks/docker_netauth/chef-12.4.0-1.el7.x86_64.rpm
+/cookbooks/docker_netauth/chef-docker.tar.gz
+/cookbooks/docker_netauth/Dockerfile

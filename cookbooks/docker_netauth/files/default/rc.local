@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+# ipset restore < /etc/ipset
+# iptables-restore /etc/iptables-rules
+

@@ -1,0 +1,1 @@
+<%= render "hosts_append_original.erb" if File.readlines("/etc/hosts").grep(/aws/).none? %>
