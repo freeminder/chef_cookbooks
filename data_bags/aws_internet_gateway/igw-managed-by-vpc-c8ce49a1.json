@@ -1,0 +1,7 @@
+{
+  "id": "igw-managed-by-vpc-c8ce49a1",
+  "reference": {
+    "id": "igw-437ea72a"
+  },
+  "driver_url": "aws::eu-central-1"
+}

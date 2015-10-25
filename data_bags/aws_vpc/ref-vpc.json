@@ -1,7 +1,7 @@
 {
   "id": "ref-vpc",
   "reference": {
-    "id": "vpc-e50f8b8c"
+    "id": "vpc-ddd750b4"
   },
   "driver_url": "aws::eu-central-1"
 }

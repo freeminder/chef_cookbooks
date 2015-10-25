@@ -1,0 +1,5 @@
+{
+  "name": "nginx-cache1",
+  "orgname": "chef",
+  "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0cqBJjyzT6GmwQsA//k8\nmnHvT0cCnQ966GtJANWGyUjRgMVABAcjoTEqJOSJq61ioMs/Gkjsxrf9XJEPKz5Y\ni7kwc7SDOW2kl/mNHsUcNTGWKhbEVrXtVPfbK5FrUkzJBv+or2hx+WyJeNOOtjpA\nblBFMkgKEawGpJQDSF1N5lFwOjfWLNQfnQgpcAZGj2SPpBWZCSZD4cG80QPS6GBh\nkm5Xhv7+p/4HIX5HksisbML249nHC+AqayOXLGHtZRjC0utD9zdOUxvs7t8ygg5i\ntExEHd9LNacEvHU5GBh8tgVGBR0ZgbALksW1rbpzerXWpl3bmPZcvfn4VxnI56dF\nBQIDAQAB\n-----END PUBLIC KEY-----\n"
+}

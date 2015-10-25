@@ -15,9 +15,7 @@ Trial Cookbook
 
     bundle
 
-# Usage
 ## Configuration
-
 ### ~/.chef/knife.rb should contain configuration:
 
     log_level                :info
@@ -40,9 +38,16 @@ Trial Cookbook
     aws_secret_access_key = yyyyyyyyyyyyyyyyyyyyyyyyy
     region = eu-central-1
 
+# Usage
 ### Run recipe in chef_cookbooks dir:
 
     chef-client -z cookbooks/hb_trial/recipes/aws_setup.rb
+
+
+## Notes
+Tested in 'eu-central-1' region only. AWS AMI can be different in another regions.
+To set your own vhosts, edit [cookbooks/hb_trial/attributes/default.rb](attributes/default.rb).
+
 
 ## License
 

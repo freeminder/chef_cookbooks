@@ -4,7 +4,7 @@ package 'wget'
 package 'curl'
 package 'git'
 package 'sysv-rc-conf' if node['platform_family'] == 'debian'
-
+package 'fail2ban'
 
 # PATCH /etc/inputrc
 cookbook_file '/etc/inputrc' do
@@ -78,12 +78,4 @@ execute "Download and make executable rsub" do
   user "root"
   command "wget -O /usr/local/bin/rsub https://raw.github.com/aurora/rmate/master/rmate && chmod +x /usr/local/bin/rsub"
   not_if { ::File.exist?('/usr/local/bin/rsub') }
-end
-
-
-# PATCH /etc/rc.local
-cookbook_file '/etc/rc.local' do
-  mode '0755'
-  owner 'root'
-  group 'root'
 end
