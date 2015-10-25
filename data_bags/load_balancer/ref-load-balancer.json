@@ -1,0 +1,8 @@
+{
+  "id": "ref-load-balancer",
+  "reference": {
+    "driver_version": "1.5.1",
+    "allocated_at": "2015-10-25 00:36:51 UTC"
+  },
+  "driver_url": "aws::eu-central-1"
+}

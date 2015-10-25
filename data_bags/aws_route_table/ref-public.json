@@ -1,0 +1,7 @@
+{
+  "id": "ref-public",
+  "reference": {
+    "id": "rtb-e03fb289"
+  },
+  "driver_url": "aws::eu-central-1"
+}

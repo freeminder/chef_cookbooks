@@ -1,0 +1,7 @@
+{
+  "id": "test-vpc",
+  "reference": {
+    "id": "vpc-6f9ae40a"
+  },
+  "driver_url": "aws::eu-west-1"
+}

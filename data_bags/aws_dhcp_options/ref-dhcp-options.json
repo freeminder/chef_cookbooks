@@ -1,0 +1,7 @@
+{
+  "id": "ref-dhcp-options",
+  "reference": {
+    "id": "dopt-12c1377b"
+  },
+  "driver_url": "aws::eu-central-1"
+}

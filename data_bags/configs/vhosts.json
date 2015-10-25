@@ -1,0 +1,20 @@
+{
+  "id": "vhosts",
+  "common_names": [
+    {
+      "web1.example.com": {
+        "port": "8081"
+      }
+    },
+    {
+      "web2.example.com": {
+        "port": "8082"
+      }
+    },
+    {
+      "web3.example.com": {
+        "port": "8081"
+      }
+    }
+  ]
+}

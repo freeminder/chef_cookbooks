@@ -1,0 +1,5 @@
+{
+  "name": "mysql-at-private-subnet",
+  "orgname": "chef",
+  "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA09lGVbMxHdbzgwASjXkE\njxLGJvq96yH2IFIdJIobM3v5/udjPAdm2guEZQkFr7NcNHujynzfwAkdvYX6Cyvw\nu7k1mU3dhjOezX2Q+6Igl4QfvGIYqoCLjs6ohYFjMy0VmZjTXo5wX/hLWootSijc\ngEXjidPCkRBu40VQ0vpPgVm+QMrwjB3hEhDAkFsb56WZYQjOMA6lLudyGXw1shKh\nTnoDH+K6CChmYNBIMEQ3v1a085l4XepAA0gBzNMILjwhmTPG5R5urFzKlOyY2Wo+\nmRCYCKBA+jrQ5Je2QiVArejq0rJ4/uzckLnXztbi1EiA5E1eyHt6siaDeGiYzDsB\nBQIDAQAB\n-----END PUBLIC KEY-----\n"
+}

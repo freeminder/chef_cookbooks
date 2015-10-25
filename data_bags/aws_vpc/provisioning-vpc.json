@@ -1,0 +1,7 @@
+{
+  "id": "provisioning-vpc",
+  "reference": {
+    "id": "vpc-d439bcbd"
+  },
+  "driver_url": "aws::eu-central-1"
+}

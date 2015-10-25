@@ -1,0 +1,7 @@
+{
+  "id": "ref-main-route-table",
+  "reference": {
+    "id": "rtb-ef3fb286"
+  },
+  "driver_url": "aws::eu-central-1"
+}
