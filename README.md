@@ -1,17 +1,20 @@
 Chef Cookbooks
 ======================
 
-# Requirements
-
-* **Ruby >= 1.9.2**
-
 # Installation
+## Requirements
 
-    gem install chef knife-ec2 chef-provisioning-aws
+* **Ruby >= 1.9.3**
+* **Bundler**
 
-# Usage
+### Clone repo:
 
     git clone https://github.com/freeminder/chef_cookbooks
+
+### To install the dependencies, run bundle in chef_cookbooks/cookbooks/hb_trial:
+
+    bundle
+
 
 ## License
 
