@@ -151,19 +151,19 @@ load_balancer 'ref-load-balancer' do
 end
 
 
-machine 'ref-nat' do
-  machine_options bootstrap_options: {
-    image_id: "ami-1e073a03", # default for eu-central-1
-    instance_type: "t2.micro",
-    subnet_id: 'ref-subnet',
-    security_group_ids: 'ref-sg1',
-    availability_zone: 'eu-central-1a',
-    key_name: "id_rsa" # If not specified, this will be used and generated
-  },
-  transport_address_location: :public_ip # `:public_ip` (default), `:private_ip` or `:dns`.  Defines how SSH or WinRM should find an address to communicate with the instance.
-end
-aws_eip_address 'ref-elastic-ip' do
-  machine 'ref-nat'
-  associate_to_vpc true
-end
+# Doesn't work. Read https://github.com/chef/chef-provisioning-aws/issues/366
+# aws_eip_address 'ref-elastic-ip' do
+#   machine 'ref-nat' do
+#     machine_options bootstrap_options: {
+#       image_id: "ami-1e073a03",
+#       instance_type: "t2.micro",
+#       subnet_id: 'ref-subnet',
+#       security_group_ids: 'ref-sg1',
+#       availability_zone: 'eu-central-1a',
+#       key_name: "id_rsa"
+#     },
+#     transport_address_location: :public_ip
+#   end
+#   associate_to_vpc true
+# end
 

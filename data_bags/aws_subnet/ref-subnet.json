@@ -1,7 +1,7 @@
 {
   "id": "ref-subnet",
   "reference": {
-    "id": "subnet-0a4bdf63"
+    "id": "subnet-d176e2b8"
   },
   "driver_url": "aws::eu-central-1"
 }

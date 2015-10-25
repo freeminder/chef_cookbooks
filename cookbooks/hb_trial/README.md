@@ -20,8 +20,9 @@ Trial Cookbook
 
     log_level                :info
     log_location             STDOUT
-    node_name                'dim'
-    client_key               '/home/path/.chef/dim.pem'
+    node_name                'provisioner'
+    client_key               '/home/path/.chef/provisioner.pem'
+    validation_client_name   'validator'
     chef_server_url          'http://127.0.0.1:8889'
     knife[:chef_repo_path] = '/home/path/Documents/devel/chef_cookbooks'
 
@@ -30,6 +31,11 @@ Trial Cookbook
     knife[:aws_access_key_id] = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
     knife[:aws_secret_access_key] = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
     knife[:ssh_user] = 'ubuntu'
+
+### Generate client's key in ~/.chef:
+
+    ssh-keygen -f provisioner.pem
+
 
 ### ~/.aws/config should contain configuration:
 
@@ -48,6 +54,8 @@ Trial Cookbook
 Tested in 'eu-central-1' region only. AWS AMI can be different in another regions.
 To set your own vhosts, edit [cookbooks/hb_trial/attributes/default.rb](attributes/default.rb).
 
+The recipe doesn't deploy a NAT instance and route MySQL instance's traffic throught it since there is an issues with EIP:
+https://github.com/chef/chef-provisioning-aws/issues/366
 
 ## License
 

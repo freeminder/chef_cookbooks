@@ -5,10 +5,10 @@
     "chef_provisioning": {
       "reference": {
         "driver_version": "1.5.1",
-        "allocated_at": "2015-10-25 18:25:20 UTC",
+        "allocated_at": "2015-10-25 19:06:55 UTC",
         "host_node": "chefzero://localhost:8889/nodes/",
         "image_id": "ami-1e073a03",
-        "instance_id": "i-b711f20a",
+        "instance_id": "i-d614f76b",
         "key_name": "id_rsa",
         "transport_address_location": "public_ip"
       },
