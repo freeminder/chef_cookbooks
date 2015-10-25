@@ -5,10 +5,10 @@
     "chef_provisioning": {
       "reference": {
         "driver_version": "1.5.1",
-        "allocated_at": "2015-10-25 18:01:13 UTC",
+        "allocated_at": "2015-10-25 18:35:28 UTC",
         "host_node": "chefzero://localhost:8889/nodes/",
         "image_id": "ami-accff2b1",
-        "instance_id": "i-100eedad",
+        "instance_id": "i-9810f325",
         "key_name": "id_rsa",
         "transport_address_location": "public_ip"
       },
@@ -488,17 +488,17 @@
           ],
           "encapsulation": "Ethernet",
           "addresses": {
-            "02:71:49:85:2F:35": {
+            "02:61:DD:5C:1A:5D": {
               "family": "lladdr"
             },
-            "10.0.0.45": {
+            "10.0.0.145": {
               "family": "inet",
               "prefixlen": "24",
               "netmask": "255.255.255.0",
               "broadcast": "10.0.0.255",
               "scope": "Global"
             },
-            "fe80::71:49ff:fe85:2f35": {
+            "fe80::61:ddff:fe5c:1a5d": {
               "family": "inet6",
               "prefixlen": "64",
               "scope": "Link"
@@ -506,7 +506,7 @@
           },
           "state": "up",
           "arp": {
-            "10.0.0.1": "02:c6:de:92:83:d1"
+            "10.0.0.1": "02:ab:36:11:d3:2f"
           },
           "routes": [
             {
@@ -519,7 +519,7 @@
               "family": "inet",
               "scope": "link",
               "proto": "kernel",
-              "src": "10.0.0.45"
+              "src": "10.0.0.145"
             },
             {
               "destination": "fe80::/64",
@@ -538,15 +538,15 @@
         "interfaces": {
           "lo": {
             "rx": {
-              "bytes": "1538252",
-              "packets": "3366",
+              "bytes": "1540062",
+              "packets": "3393",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
             },
             "tx": {
-              "bytes": "1538252",
-              "packets": "3366",
+              "bytes": "1540062",
+              "packets": "3393",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
@@ -556,16 +556,16 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "1461229",
-              "packets": "16631",
+              "bytes": "1096630",
+              "packets": "8893",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "44893757",
-              "packets": "32333",
+              "bytes": "44983574",
+              "packets": "32523",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -574,8 +574,8 @@
         }
       }
     },
-    "ipaddress": "10.0.0.45",
-    "macaddress": "02:71:49:85:2F:35",
+    "ipaddress": "10.0.0.145",
+    "macaddress": "02:61:DD:5C:1A:5D",
     "ec2": {
       "ami_id": "ami-accff2b1",
       "ami_launch_index": "0",
@@ -584,41 +584,41 @@
       "block_device_mapping_ephemeral0": "sdb",
       "block_device_mapping_ephemeral1": "sdc",
       "block_device_mapping_root": "/dev/sda1",
-      "hostname": "ip-10-0-0-45.example.com",
+      "hostname": "ip-10-0-0-145.example.com",
       "instance_action": "none",
-      "instance_id": "i-100eedad",
+      "instance_id": "i-9810f325",
       "instance_type": "t2.micro",
-      "local_hostname": "ip-10-0-0-45.example.com",
-      "local_ipv4": "10.0.0.45",
-      "mac": "02:71:49:85:2f:35",
+      "local_hostname": "ip-10-0-0-145.example.com",
+      "local_ipv4": "10.0.0.145",
+      "mac": "02:61:dd:5c:1a:5d",
       "metrics_vhostmd": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
       "network_interfaces_macs": {
-        "02:71:49:85:2f:35": {
+        "02:61:dd:5c:1a:5d": {
           "device_number": "0",
-          "interface_id": "eni-2cb11c44",
+          "interface_id": "eni-358b265d",
           "ipv4-associations": {
-            "52.29.93.237": "10.0.0.45"
+            "52.28.240.107": "10.0.0.145"
           },
-          "local_hostname": "ip-10-0-0-45.example.com",
-          "local_ipv4s": "10.0.0.45",
-          "mac": "02:71:49:85:2f:35",
+          "local_hostname": "ip-10-0-0-145.example.com",
+          "local_ipv4s": "10.0.0.145",
+          "mac": "02:61:dd:5c:1a:5d",
           "owner_id": "020322960469",
-          "public_hostname": "ec2-52-29-93-237.eu-central-1.compute.amazonaws.com",
-          "public_ipv4s": "52.29.93.237",
-          "security_group_ids": "sg-5bd1b832",
+          "public_hostname": "ec2-52-28-240-107.eu-central-1.compute.amazonaws.com",
+          "public_ipv4s": "52.28.240.107",
+          "security_group_ids": "sg-86d2bbef",
           "security_groups": "ref-sg1",
-          "subnet_id": "subnet-c148dca8",
+          "subnet_id": "subnet-0a4bdf63",
           "subnet_ipv4_cidr_block": "10.0.0.0/24",
-          "vpc_id": "vpc-ddd750b4",
+          "vpc_id": "vpc-62d4530b",
           "vpc_ipv4_cidr_block": "10.0.0.0/24"
         }
       },
       "placement_availability_zone": "eu-central-1a",
       "profile": "default-hvm",
-      "public_hostname": "ec2-52-29-93-237.eu-central-1.compute.amazonaws.com",
-      "public_ipv4": "52.29.93.237",
+      "public_hostname": "ec2-52-28-240-107.eu-central-1.compute.amazonaws.com",
+      "public_ipv4": "52.28.240.107",
       "public_keys_0_openssh_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4/dloTDiMfF38k3TdK65403MKFyhu1PY1aoPs4ysU8ZWxMabBrKkrgqmAQSa52rh91JMrzG/YalAGtybQVl156GTiT8dmDVW8rIXjmEkmjmMCpYnjhSpe1csaHq/AELgQQ6gLlF4Nfl4P+EkZF6NYV6AquvJmUpJPPEY4dd4U6IPX1zsDVZE5SSj4ryiAiNKzf6r61BcOp3ltVtPfBImESsfkKoZ1l7YBgX2hkSIMhD967aeMf8bNJ7o1+QjYFVTY0bM3nGrQl7vjh9WCc27L0LNCEkgKggJJYTEv/CDAJkZpCT0nx2U8K97yBA5CofFGNmg6E6zgd4LtJep3O5Un id_rsa\n",
-      "reservation_id": "r-afd9c415",
+      "reservation_id": "r-06dac7bc",
       "security_groups": [
         "ref-sg1"
       ],
@@ -711,16 +711,16 @@
     },
     "cloud_v2": {
       "public_ipv4_addrs": [
-        "52.29.93.237"
+        "52.28.240.107"
       ],
       "local_ipv4_addrs": [
-        "10.0.0.45"
+        "10.0.0.145"
       ],
       "provider": "ec2",
-      "public_hostname": "ec2-52-29-93-237.eu-central-1.compute.amazonaws.com",
-      "local_hostname": "ip-10-0-0-45.example.com",
-      "public_ipv4": "52.29.93.237",
-      "local_ipv4": "10.0.0.45"
+      "public_hostname": "ec2-52-28-240-107.eu-central-1.compute.amazonaws.com",
+      "local_hostname": "ip-10-0-0-145.example.com",
+      "public_ipv4": "52.28.240.107",
+      "local_ipv4": "10.0.0.145"
     },
     "command": {
       "ps": "ps -ef"
@@ -755,8 +755,8 @@
     "filesystem": {
       "/dev/xvda1": {
         "kb_size": "8115168",
-        "kb_used": "982352",
-        "kb_available": "6697540",
+        "kb_used": "982356",
+        "kb_available": "6697536",
         "percent_used": "13%",
         "mount": "/",
         "total_inodes": "524288",
@@ -897,11 +897,11 @@
       "0": {
         "vendor_id": "GenuineIntel",
         "family": "6",
-        "model": "63",
-        "model_name": "Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz",
-        "stepping": "2",
-        "mhz": "2400.042",
-        "cache_size": "30720 KB",
+        "model": "62",
+        "model_name": "Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz",
+        "stepping": "4",
+        "mhz": "2494.040",
+        "cache_size": "25600 KB",
         "physical_id": "0",
         "core_id": "0",
         "cores": "1",
@@ -941,13 +941,11 @@
           "pni",
           "pclmulqdq",
           "ssse3",
-          "fma",
           "cx16",
           "pcid",
           "sse4_1",
           "sse4_2",
           "x2apic",
-          "movbe",
           "popcnt",
           "tsc_deadline_timer",
           "aes",
@@ -957,25 +955,20 @@
           "rdrand",
           "hypervisor",
           "lahf_lm",
-          "abm",
           "xsaveopt",
           "fsgsbase",
-          "bmi1",
-          "avx2",
           "smep",
-          "bmi2",
-          "erms",
-          "invpcid"
+          "erms"
         ]
       },
       "total": 1,
       "real": 1,
       "cores": 1
     },
-    "uptime_seconds": 87,
-    "uptime": "1 minutes 27 seconds",
-    "idletime_seconds": 50,
-    "idletime": "50 seconds",
+    "uptime_seconds": 64,
+    "uptime": "1 minutes 04 seconds",
+    "idletime_seconds": 37,
+    "idletime": "37 seconds",
     "virtualization": {
       "systems": {
         "xen": "guest"
@@ -983,7 +976,7 @@
       "system": "xen",
       "role": "guest"
     },
-    "ip6address": "fe80::71:49ff:fe85:2f35",
+    "ip6address": "fe80::61:ddff:fe5c:1a5d",
     "memory": {
       "swap": {
         "cached": "0kB",
@@ -991,32 +984,32 @@
         "free": "0kB"
       },
       "total": "1016292kB",
-      "free": "407192kB",
-      "buffers": "23428kB",
+      "free": "409440kB",
+      "buffers": "23396kB",
       "cached": "375400kB",
-      "active": "226144kB",
-      "inactive": "308300kB",
-      "dirty": "1784kB",
+      "active": "225436kB",
+      "inactive": "306328kB",
+      "dirty": "16680kB",
       "writeback": "0kB",
-      "anon_pages": "135636kB",
-      "mapped": "9776kB",
-      "slab": "59012kB",
-      "slab_reclaimable": "48424kB",
-      "slab_unreclaim": "10588kB",
-      "page_tables": "3148kB",
+      "anon_pages": "132984kB",
+      "mapped": "9896kB",
+      "slab": "59248kB",
+      "slab_reclaimable": "48776kB",
+      "slab_unreclaim": "10472kB",
+      "page_tables": "3204kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "508144kB",
-      "committed_as": "246312kB",
+      "committed_as": "245060kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "2360kB",
-      "vmalloc_chunk": "34359730491kB"
+      "vmalloc_chunk": "34359730443kB"
     },
     "keys": {
       "ssh": {
-        "host_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDFd7zh0L8xc34bX6ygLShsOShB5+3+HGpxgMMmBAcwMM3qOoK+EUJUPaSE8q+X41rX+OrTuU9dn/KFDH63F7aC6y0+Qw4/g4qEImdaC7xnD0J/gIuBU8I5Wff/DE+5zUitg1sLXIi3AsjJZsPf+qAnUyZUT4QjRyK+vcLrnsrjnyZXpsw3KOIQxPoEwrAay/kUro1Dl1+98nBIO6Qen+hKCtGof+gjp7DBf9eWWjgNjrJTy41geHvf2sHMsPxw2t6/oqFKduuqyOg3f9E0EYmOGDs0J5UuPnCQG9pLOKSA+TxrBsFgQGEkQwJIzHQy3VFm08bqX0LcjsXZMfFVQ/O7",
-        "host_dsa_public": "AAAAB3NzaC1kc3MAAACBAKj2I8ayOoSgZML2hLDLZ9o/UkkRHNVdEwYMj3oG+iGf0ayn2dQMHBFs5YQ9FTHVmBTHmTlaxu++4noSZAbPdZfcxEhDUS35ZOcvKFOBBzlUV/gQl0DOn0YHjPs3ZWcxckWppmN3lEfO6cmyQ+jaHwaH1ipsuKstrj1xnJAXZh83AAAAFQCWlKTSvMAP1IoEqnno4ZbOELTpOQAAAIAB2pvdN2ykDB0774tHacDuqDFQarlzcxkjAzL9jK6pqCgk0YE9CYDFqSjl6LVjzkmOm/ObNqFPoVWdPg/aoZhBSGYqAUZAKVa7l6j28ha0R7vWycjeaBb0Gk5Q20IuYEmPhvNl388dG4ZHvN18GMPwQ88VoqrNUHKpgxEiSoRDJwAAAIA7f9HmHRXox08iOXjmtmQdH/H4ffMEL9PeCrt4EJ+zUy+W/ZhNOLrSi34liL/xg4QN5XlYg5GPWLT5AjQULJGSf3Ql6TgOMOgnJWSOiuM6LwhExXQEFkW9pDhT/mpxLrlfZnjjMG85W/YBuLIsr4IS5ZKHLSmmREztqEI9U8ysoA==",
-        "host_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCormr7lGePM7/oEGuw5sj22JHV15uVtBCGd17eff+4eAIPVPs6lr1LYrpx//Ikx8PVwH9qwVNBpivJnNIGmGpY=",
+        "host_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQCtX8Z6VL0FDcIC0S8TDc88WjYAezOjpX8cGqOfvp3IgodkqAyXO8Tp1R8MGMIgL3D1/QPcdyWxsyZf8S9eifdSNf042g4st83B3FdRmBSKdFAgO9yWYEYArv9JHCfV0lTQkgcg1qocHzQgXRx7zDaHt115qEMq9XnPR8vg5D2SckBWLeahXoDxrz85fPdqA5DgabyYORbkYuuS33DK3VW+GMVrHMxuZPYzEdEVpHtbCLkGV5C6yUy5+wzLmvibEV4diuBo0/Vem5CzG8nEkMt0zkRqTS5KepAhM1bOBP4dxej0NANskjLQ5hQ4/3PgHlCR8XyzQ7k6t84n21xY0g8z",
+        "host_dsa_public": "AAAAB3NzaC1kc3MAAACBAJi1QlgpShecn8hEk5HxrRXGaqcZXG6ohJj56h123Dp5POcQGNwKuwEzNLPHpY95wZo1FimUgkyva3FImE+psfhl9tEzYvpeV6Zfvd+3HHhNnA8BhZt88nQCZ9DJ5ir5kLdCs0MOVppip5PRYL+PeW2Fz0ZPd+skTKcrgN7DjC2JAAAAFQCJbOMhYiRItO5yy7zp50kOGH/AZQAAAIAev21hIrghKFSJqqQFMa6M6Sc1LQugd5jgbRp9PA/7Lr1pEvvxeZ3wEmuhkymY20YMOsMQQ331B8fN5OO3Lgk+bTsnejnT0sKyPMsD4LAqeXCSwLlfDnTvQRSlczKx7RiaD4HpLjHksT00iHojp9mG148MD2NytzTC49jUgbWd4gAAAIBZifk6VrCrbsEglpWZ3kFGk2WS6z3U+max85dGlFpTkkWFZsGbmAgEwVSpLUEAwtRPEqYlG6fMm8OYR8pPpnF2rIClIBCSB2vHQZ8zOd/2MVOCrnprS9ooNamcRMNFgJ1qNbydbo0XyO83guzE7nLzqAA8gnVTQMWBIB92GY+wqg==",
+        "host_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEkWlp7Ir+tOtpwGegbLxVwtC7+LmJYj3SZ0bN36FhPxLe122XzjGs8x/qgjdpf9E7Jvo0LbCppe5nD07rkEV+c=",
         "host_ecdsa_type": "ecdsa-sha2-nistp256"
       }
     },
@@ -1035,7 +1028,7 @@
             "application_identifier": "BIOS Information",
             "Vendor": "Xen",
             "Version": "4.2.amazon",
-            "Release Date": "06/01/2015",
+            "Release Date": "05/06/2015",
             "Address": "0xE8000",
             "Runtime Size": "96 kB",
             "ROM Size": "64 kB",
@@ -1049,7 +1042,7 @@
         ],
         "vendor": "Xen",
         "version": "4.2.amazon",
-        "release_date": "06/01/2015",
+        "release_date": "05/06/2015",
         "address": "0xE8000",
         "runtime_size": "96 kB",
         "rom_size": "64 kB",
@@ -1064,8 +1057,8 @@
             "Manufacturer": "Xen",
             "Product Name": "HVM domU",
             "Version": "4.2.amazon",
-            "Serial Number": "ec2922f6-435c-81a0-6007-b4dcaf1d1a60",
-            "UUID": "EC2922F6-435C-81A0-6007-B4DCAF1D1A60",
+            "Serial Number": "ec2b1cde-edcf-038a-7627-cd2d8181fd66",
+            "UUID": "EC2B1CDE-EDCF-038A-7627-CD2D8181FD66",
             "Wake-up Type": "Power Switch",
             "SKU Number": "Not Specified",
             "Family": "Not Specified"
@@ -1074,8 +1067,8 @@
         "manufacturer": "Xen",
         "product_name": "HVM domU",
         "version": "4.2.amazon",
-        "serial_number": "ec2922f6-435c-81a0-6007-b4dcaf1d1a60",
-        "uuid": "EC2922F6-435C-81A0-6007-B4DCAF1D1A60",
+        "serial_number": "ec2b1cde-edcf-038a-7627-cd2d8181fd66",
+        "uuid": "EC2B1CDE-EDCF-038A-7627-CD2D8181FD66",
         "wake_up_type": "Power Switch",
         "sku_number": "Not Specified",
         "family": "Not Specified"
@@ -1119,12 +1112,12 @@
             "Type": "Central Processor",
             "Family": "Other",
             "Manufacturer": "Intel",
-            "ID": "F2 06 03 00 FF FB 89 17",
+            "ID": "E4 06 03 00 FF FB 89 17",
             "Version": "Not Specified",
             "Voltage": "Unknown",
             "External Clock": "Unknown",
-            "Max Speed": "2400 MHz",
-            "Current Speed": "2400 MHz",
+            "Max Speed": "2494 MHz",
+            "Current Speed": "2494 MHz",
             "Status": "Populated, Enabled",
             "Upgrade": "Other"
           }
@@ -1133,12 +1126,12 @@
         "type": "Central Processor",
         "family": "Other",
         "manufacturer": "Intel",
-        "id": "F2 06 03 00 FF FB 89 17",
+        "id": "E4 06 03 00 FF FB 89 17",
         "version": "Not Specified",
         "voltage": "Unknown",
         "external_clock": "Unknown",
-        "max_speed": "2400 MHz",
-        "current_speed": "2400 MHz",
+        "max_speed": "2494 MHz",
+        "current_speed": "2494 MHz",
         "status": "Populated, Enabled",
         "upgrade": "Other"
       },
@@ -1165,7 +1158,7 @@
         "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.5.1/lib"
       }
     },
-    "ohai_time": 1445796221.951558,
+    "ohai_time": 1445798240.8723118,
     "block_device": {
       "ram0": {
         "size": "131072",
@@ -1297,8 +1290,8 @@
       "by_device": {
         "/dev/xvda1": {
           "kb_size": "8115168",
-          "kb_used": "982352",
-          "kb_available": "6697540",
+          "kb_used": "982356",
+          "kb_available": "6697536",
           "percent_used": "13%",
           "total_inodes": "524288",
           "inodes_used": "74901",
@@ -1457,8 +1450,8 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "8115168",
-          "kb_used": "982352",
-          "kb_available": "6697540",
+          "kb_used": "982356",
+          "kb_available": "6697536",
           "percent_used": "13%",
           "total_inodes": "524288",
           "inodes_used": "74901",
@@ -1689,8 +1682,8 @@
         "/dev/xvda1,/": {
           "device": "/dev/xvda1",
           "kb_size": "8115168",
-          "kb_used": "982352",
-          "kb_available": "6697540",
+          "kb_used": "982356",
+          "kb_available": "6697536",
           "percent_used": "13%",
           "mount": "/",
           "total_inodes": "524288",
@@ -1923,15 +1916,15 @@
     "init_package": "init",
     "cloud": {
       "public_ips": [
-        "52.29.93.237"
+        "52.28.240.107"
       ],
       "private_ips": [
-        "10.0.0.45"
+        "10.0.0.145"
       ],
-      "public_ipv4": "52.29.93.237",
-      "public_hostname": "ec2-52-29-93-237.eu-central-1.compute.amazonaws.com",
-      "local_ipv4": "10.0.0.45",
-      "local_hostname": "ip-10-0-0-45.example.com",
+      "public_ipv4": "52.28.240.107",
+      "public_hostname": "ec2-52-28-240-107.eu-central-1.compute.amazonaws.com",
+      "local_ipv4": "10.0.0.145",
+      "local_hostname": "ip-10-0-0-145.example.com",
       "provider": "ec2"
     },
     "vmware": {
@@ -2430,8 +2423,8 @@
       }
     },
     "current_user": "root",
-    "hostname": "ip-10-0-0-45",
-    "machinename": "ip-10-0-0-45",
+    "hostname": "ip-10-0-0-145",
+    "machinename": "ip-10-0-0-145",
     "domain": null,
     "recipes": [
       "apt::default",
