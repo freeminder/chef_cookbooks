@@ -1,15 +1,17 @@
-SwapSlider's CookBooks
+Chef Cookbooks
 ======================
 
-Roles (groups of servers):
---------------------------
-Load balancers
+# Requirements
 
-Application servers
+* **Ruby >= 1.9.2**
 
-Database servers
+# Installation
 
-Chef servers
+    gem install chef knife-ec2 chef-provisioning-aws
+
+# Usage
+
+    git clone https://github.com/freeminder/chef_cookbooks
 
 ## License
 
