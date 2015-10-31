@@ -32,6 +32,10 @@ Trial Cookbook
     knife[:aws_secret_access_key] = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
     knife[:ssh_user] = 'ubuntu'
 
+### Set 
+knife[:ssh_key_name] 
+### to your Amazon EC2 Key Pair name.
+
 ### Generate client's key in ~/.chef:
 
     ssh-keygen -f provisioner.pem

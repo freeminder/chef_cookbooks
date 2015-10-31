@@ -17,3 +17,6 @@
 /cookbooks/docker_netauth/chef-12.4.0-1.el7.x86_64.rpm
 /cookbooks/docker_netauth/chef-docker.tar.gz
 /cookbooks/docker_netauth/Dockerfile
+
+/nodes
+/clients
