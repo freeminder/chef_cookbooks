@@ -32,7 +32,8 @@ Trial Cookbook
     knife[:aws_secret_access_key] = 'yyyyyyyyyyyyyyyyyyyyyyyyy'
     knife[:ssh_user] = 'ubuntu'
 
-### Set `knife[:ssh_key_name]` to your Amazon EC2 Key Pair name.
+#### Set `knife[:ssh_key_name]` to your Amazon EC2 Key Pair name.
+#### You can also refer to https://docs.chef.io/config_rb_knife_optional_settings.html for additional options.
 
 ### Generate client's key in ~/.chef:
 
